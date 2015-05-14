@@ -5,10 +5,13 @@
  */
 package charcoaled;
 
+import byui.cit260.charcoaled.model.Actor;
 import byui.cit260.charcoaled.model.Game;
+import byui.cit260.charcoaled.model.Item;
 import byui.cit260.charcoaled.model.Location;
 import byui.cit260.charcoaled.model.Player;
 import byui.cit260.charcoaled.model.Map;
+import byui.cit260.charcoaled.model.Resource;
 /**
  *
  * @author ih8pcs
@@ -61,6 +64,38 @@ public class Charcoaled {
         
         String locationInfo = locationOne.toString();
         System.out.println(locationInfo);
+        
+        //for the Actor Class
+        Actor actorOne = new Actor();
+        
+        actorOne.setName("Heidi Smith");
+        actorOne.setDescription("This is a master player of Charcoaled");
+        actorOne.setCoordinates(locationOne);
+        
+        String actorInfo = actorOne.toString();
+        System.out.println(actorInfo);
+        
+        //for the Resource Class
+        Resource resourceOne = new Resource();
+        
+        resourceOne.setAmountAvailable(10);
+        resourceOne.setAmountRequired(15);
+        resourceOne.setType(1);
+        
+        String resourceInfo = resourceOne.toString();
+        System.out.println(resourceInfo);
+        
+        //for the Item class
+        Item itemOne = new Item();
+        
+        itemOne.setName("Fire Extinguisher");
+        itemOne.setDescription("Carbon Dioxide Fire Extinguisher");
+        itemOne.setType(5);
+        itemOne.setUsesCount(0);
+        itemOne.setMaxUses(10);
+        
+        String itemInfo = itemOne.toString();
+        System.out.println(itemInfo);
     }
     
 }
