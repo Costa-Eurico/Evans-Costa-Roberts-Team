@@ -9,9 +9,12 @@ import byui.cit260.charcoaled.model.Actor;
 import byui.cit260.charcoaled.model.Game;
 import byui.cit260.charcoaled.model.Item;
 import byui.cit260.charcoaled.model.Location;
+import byui.cit260.charcoaled.model.Obstacle;
 import byui.cit260.charcoaled.model.Player;
 import byui.cit260.charcoaled.model.Map;
 import byui.cit260.charcoaled.model.Resource;
+import byui.cit260.charcoaled.model.Scene;
+import byui.cit260.charcoaled.model.Victim;
 /**
  *
  * @author ih8pcs
@@ -96,6 +99,39 @@ public class Charcoaled {
         
         String itemInfo = itemOne.toString();
         System.out.println(itemInfo);
+        
+        // for the Victim class
+        Victim victimOne = new Victim();
+        
+        victimOne.setStatus("Unconcious");
+        victimOne.setDescription("This person has been knocked unconcious!");
+        victimOne.setCoordinates(locationOne);
+        
+        String victimInfo = victimOne.toString();
+        System.out.println(victimInfo);
+        
+        
+        // for the obstacle class
+        Obstacle obstacleOne = new Obstacle();
+        
+        obstacleOne.settype(1);
+        obstacleOne.setCoordinates(locationOne);
+        obstacleOne.setEquationSolved(true);
+        
+        String obstacleInfo = obstacleOne.toString();
+        System.out.println(obstacleInfo);
+        
+        // for the scene class
+        Scene sceneOne = new Scene();
+        
+        sceneOne.setName("Opening Scene");
+        sceneOne.setDescription("Hurry! Find all of the people before the building burns down!");
+        sceneOne.setVictims(5);
+        
+        String sceneInfo = sceneOne.toString();
+        System.out.println(sceneInfo);
+        
     }
     
 }
+
