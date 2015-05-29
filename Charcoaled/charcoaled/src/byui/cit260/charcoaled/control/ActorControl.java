@@ -31,4 +31,28 @@ public class ActorControl {
 	return ropeLength;
 
     }
+    
+    // Calculates the force necessary to move a given object, in newtons.
+    public double calcForceNeeded(double weight, double cof){
+        //function variables and constants
+        double GRAVITY_CONSTANT = -9.8; // in m/s^2
+        double forceOfFriction;
+        double forceN;
+        
+        if(weight < 1){ // validate lower boundary
+            return -1;
+        }
+        if(cof <.1){ //validate coeficient of friction
+            return -1;
+        }
+        
+        //Calculate Newtons of force required to mode the object
+        forceOfFriction = -(cof) * weight; // calculate force of friction;
+        forceN = forceOfFriction * GRAVITY_CONSTANT;
+        
+        if(forceN > 225) //225 N is the maximum force recommended by OSHA that an individual should push.
+            return -1;
+        else
+            return forceN;
+    }
 }

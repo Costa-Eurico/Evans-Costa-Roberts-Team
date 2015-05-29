@@ -19,11 +19,11 @@ public class Obstacle implements Serializable{
     private Location coordinates = new Location();
     private static boolean equationSolved;
 
-    public int gettype() {
+    public int getType() {
         return type;
     }
 
-    public void settype(int type) {
+    public void setType(int type) {
         this.type = type;
     }
 

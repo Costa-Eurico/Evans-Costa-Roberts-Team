@@ -114,7 +114,7 @@ public class Charcoaled {
         // for the obstacle class
         Obstacle obstacleOne = new Obstacle();
         
-        obstacleOne.settype(1);
+        obstacleOne.setType(1);
         obstacleOne.setCoordinates(locationOne);
         obstacleOne.setEquationSolved(true);
         

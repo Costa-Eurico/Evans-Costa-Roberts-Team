@@ -5,8 +5,12 @@
  */
 package byui.cit260.charcoaled.control;
 
+import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.BeforeClass;
 
 /**
  *
@@ -15,6 +19,22 @@ import static org.junit.Assert.*;
 public class ActorControlTest {
     
     public ActorControlTest() {
+    }
+
+    @BeforeClass
+    public static void setUpClass() throws Exception {
+    }
+
+    @AfterClass
+    public static void tearDownClass() throws Exception {
+    }
+
+    @Before
+    public void setUp() throws Exception {
+    }
+
+    @After
+    public void tearDown() throws Exception {
     }
     /**
      * Test of calcLengthOfRope method, of class ActorControl.
@@ -188,6 +208,165 @@ public class ActorControlTest {
         //compare expected return value with actual value returned
         assertEquals(expResult, result, 0.0001);
 
+    }
+
+    /**
+     * Test of calcForceNeeded method, of class ActorControl.
+     */
+    @Test
+    public void testCalcForceNeeded() {
+        double weight;
+        double cof;
+        double expResult;  //expected output returned value
+        double result; //actual result
+        ActorControl instance = new ActorControl(); //create instance of ActorControl class
+        
+        System.out.println("calcForceNeeded");
+        /***********************************
+         * Test Case #1
+         **********************************/
+        System.out.println("\tTest case #1");
+        
+        //input values for text case 1
+        weight = 30.0;
+        cof = .5;
+        expResult = 147.0;
+        
+        //call function to run test
+        result = instance.calcForceNeeded(weight, cof);
+        
+        //compare expected return value with actual value returned
+        assertEquals(expResult, result, 0.0001);
+        
+        
+        /***********************************
+         * Test Case #2
+         **********************************/
+        System.out.println("\tTest case #2");
+        
+        //input values for text case 2
+        weight = 116.0;
+        cof = .2;
+        expResult = -1;
+        
+        //call function to run test
+        result = instance.calcForceNeeded(weight, cof);
+        
+        //compare expected return value with actual value returned
+        assertEquals(expResult, result, 0.0001);
+        
+        /***********************************
+         * Test Case #3
+         **********************************/
+        System.out.println("\tTest case #3");
+        
+        //input values for text case 3
+        weight = 80;
+        cof = .3;
+        expResult = -1;
+        
+        //call function to run test
+        result = instance.calcForceNeeded(weight, cof);
+        
+        //compare expected return value with actual value returned
+        assertEquals(expResult, result, 0.0001);
+        
+        /***********************************
+         * Test Case #4
+         **********************************/
+        System.out.println("\tTest case #4");
+        
+        //input values for text case 4
+        weight = 60;
+        cof = .4;
+        expResult = -1;
+        
+        //call function to run test
+        result = instance.calcForceNeeded(weight, cof);
+        
+        //compare expected return value with actual value returned
+        assertEquals(expResult, result, 0.0001);
+        
+        /***********************************
+         * Test Case #5
+         **********************************/
+        System.out.println("\tTest case #5");
+        
+        //input values for text case 5
+        weight = 46.5;
+        cof = .5;
+        expResult = -1;
+        
+        //call function to run test
+        result = instance.calcForceNeeded(weight, cof);
+        
+        //compare expected return value with actual value returned
+        assertEquals(expResult, result, 0.0001);
+        
+        /***********************************
+         * Test Case #6
+         **********************************/
+        System.out.println("\tTest case #6");
+        
+        //input values for text case 6
+        weight = 38.5;
+        cof = .6;
+        expResult = -1;
+        
+        //call function to run test
+        result = instance.calcForceNeeded(weight, cof);
+        
+        //compare expected return value with actual value returned
+        assertEquals(expResult, result, 0.0001);
+        
+        
+        /***********************************
+         * Test Case #7
+         **********************************/
+        System.out.println("\tTest case #7");
+        
+        //input values for text case 7
+        weight = 40;
+        cof = .7;
+        expResult = -1;
+        
+        //call function to run test
+        result = instance.calcForceNeeded(weight, cof);
+        
+        //compare expected return value with actual value returned
+        assertEquals(expResult, result, 0.0001);
+        
+        /***********************************
+         * Test Case #8
+         **********************************/
+        System.out.println("\tTest case #8");
+        
+        //input values for text case 8
+        weight = 1;
+        cof = .1;
+        expResult = .98;
+        
+        //call function to run test
+        result = instance.calcForceNeeded(weight, cof);
+        
+        //compare expected return value with actual value returned
+        assertEquals(expResult, result, 0.0001);
+        
+        /***********************************
+         * Test Case #9
+         **********************************/
+        System.out.println("\tTest case #9");
+        
+        //input values for text case 9
+        weight = 45.918;
+        cof = .5;
+        expResult = 224.9982;
+        
+        //call function to run test
+        result = instance.calcForceNeeded(weight, cof);
+        
+        //compare expected return value with actual value returned
+        assertEquals(expResult, result, 0.0001);
     }
     
 }
