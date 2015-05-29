@@ -11,4 +11,21 @@ package byui.cit260.charcoaled.control;
  */
 public class ObstacleControl {
     
+    public double calcObstacleSize(double length, double width, double height) {
+   
+        if (length < 1 || length > 15) { //determine if length is in range
+            return -1;
+        }
+	if (width < 1 || width > 5) { //determine if width is in range
+            return -1;
+        }
+        if (height < 1 || height > 5) { //determine if height is in range
+            return -1;
+        }
+         
+	double obstacleVolume = length*width*height;
+
+	return obstacleVolume;
+
+    }
 }
