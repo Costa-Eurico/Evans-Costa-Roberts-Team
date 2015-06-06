@@ -84,27 +84,6 @@ public class HelpMenuView {
         }
     }
 
-    private void startNewGame() {
-        //create new game
-        GameControl.createNewGame(Charcoaled.getPlayer());
-        
-        GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayMenu();
-    }
-
-    private void startExistingGame() {
-         System.out.println("*** startExistingGame function called ***");
-    }
-
-    private void displayMainMenu() {
-        MainMenuView mainMenu = new MainMenuView();
-        mainMenu.displayMenu();
-    }
-
-    private void saveGame() {
-        System.out.println("*** saveGame function called ***");
-    }
-
     private void displayGameObjective() {
         System.out.println("*** displayGameObjective function called ***");
     }
