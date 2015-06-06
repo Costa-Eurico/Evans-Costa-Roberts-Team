@@ -17,9 +17,9 @@ public class HelpMenuView {
     }
     
     private final String MENU = "\n"
-            + "\n*************************************"
-            + "\n | Help Menu                        |"
-            + "\n*************************************"
+           + "\n******************************************************************"
+            + "\n| Help Menu                                                      |"
+            + "\n******************************************************************"
             + "\n O - What is the objective of the game (how to win)?"
             + "\n M - How to move between doors and floors?"
             + "\n D - What are the differences between each difficulty level?"

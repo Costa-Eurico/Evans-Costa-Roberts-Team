@@ -37,21 +37,31 @@ public class StartProgramView {
         mainMenu.displayMenu();
         
     }
+    
+    private void displayLogo(){
+        System.out.println("   (        )                                   (            (     ");
+        System.out.println("   )\\    ( /(      )   (                    )   )\\     (     )\\ )  ");
+        System.out.println(" (((_)   )\\())  ( /(   )(     (     (    ( /(  ((_)   ))\\   (()/(  ");
+        System.out.println(" )\\___  ((_)\\   )(_)) (()\\    )\\    )\\   )(_))  _    /((_)   ((_)) ");
+        System.out.println("((/ __| | |(_) ((_)_   ((_)  ((_)  ((_) ((_)_  | |  (_))     _| |  ");
+        System.out.println(" | (__  | ' \\  / _` | | '_| / _|  / _ \\ / _` | | |  / -_)  / _` |  ");
+        System.out.println("  \\___| |_||_| \\__,_| |_|   \\__|  \\___/ \\__,_| |_|  \\___|  \\__,_|  ");
+    }
 
     public void displayBanner() {
-        System.out.println("\n******************************");
+        System.out.println("\n******************************************************************");
+        this.displayLogo();
+        System.out.println("\nWelcome to Charcoaled\n"
+                +"\nThere is a large apartment complex on fire and as a firefighter"
+                +"\nyou are required to save the people before the building burns "
+                +"\nto the ground.");
         
-        System.out.println("\n Welcome to Charcoaled"
-                +"\n There is a large apartment complex on fire and as a"
-                +"\nfirefighter you are required to save the people before"
-                +"\nthe building burns to the ground.");
+        System.out.println("\nCan you overcome the obstacles and save everyone before time runs"
+                +"\nout?"
+                +"\n\nThe people need you, work fast or you might end up"
+                +"\n\n...CHARCOALED.");
         
-        System.out.println("\nCan you overcome the obstacles and save everyone"
-                +"\n...all before time runs out?"
-                +"\n The people need you, work fast or you might end up"
-                +"\n...CHARCOALED.");
-        
-        System.out.println("\n****************************");
+        System.out.println("\n******************************************************************");
     }
 
     public String getPlayersName() {
@@ -80,10 +90,10 @@ public class StartProgramView {
     }
 
     public void displayWelcomeMessage(Player player) {
-        System.out.println("\n\n******************************");
+        System.out.println("\n\n******************************************************************");
         System.out.println("\t Welcome " + player.getName() + "!");
         System.out.println("\t Work quickly, save the people and avoid the fire!");
         System.out.println("\t You have seven minutes before you're...Charcoaled.");
-        System.out.println("******************************");
+        System.out.println("******************************************************************");
     }
 }
