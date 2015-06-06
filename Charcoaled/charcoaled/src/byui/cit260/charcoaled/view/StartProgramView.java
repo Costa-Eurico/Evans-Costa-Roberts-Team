@@ -13,9 +13,9 @@ import java.util.Scanner;
  *
  * @author ih8pcs
  */
-public class StartProgram {
+public class StartProgramView {
     
-    public StartProgram(){
+    public StartProgramView(){
         
     }
     
@@ -34,7 +34,7 @@ public class StartProgram {
         this.displayWelcomeMessage(player);
         
         //display main menu
-        MainMenu mainMenu = new MainMenu();
+        MainMenuView mainMenu = new MainMenuView();
         mainMenu.displayMenu();
         
     }
