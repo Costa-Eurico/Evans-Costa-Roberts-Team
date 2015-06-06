@@ -37,7 +37,7 @@ public class MainMenu {
             selection = input.charAt(0); //get first character of string
             
             this.doAction(selection); //do action based on selection
-        } while (selection != 'E'); // a selection is not "Exit"
+        } while (Character.toLowerCase(selection) != 'e'); // a selection is not "Exit"
     }
 
     private String getInput() {
@@ -67,32 +67,20 @@ public class MainMenu {
 
     private void doAction(char choice) {
         
-        switch (choice) {
-            case 'N': //create and start new game
-                this.startNewGame();
-                break;
+        switch (Character.toLowerCase(choice)) {
             case 'n': //create and start new game
                 this.startNewGame();
-                break;
-            case 'G': //get and start an existing game
-                this.startExistingGame();
                 break;
             case 'g': //get and start an existing game
                 this.startExistingGame();
                 break;
-            case 'H': //display help menu
-                this.displayHelpMenu();
-                break;
             case 'h': //display help menu
                 this.displayHelpMenu();
-                break;
-            case 'S': //save current game
-                this.saveGame();
                 break;
             case 's': //save current game
                 this.saveGame();
                 break;
-            case 'E': //exit the program
+            case 'e': //exit the program
                 return;
             default:
                 System.out.println("\n*** Invalid selection, please try again. ***");
