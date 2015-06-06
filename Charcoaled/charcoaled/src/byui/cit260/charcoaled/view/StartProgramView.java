@@ -16,7 +16,6 @@ import java.util.Scanner;
 public class StartProgramView {
     
     public StartProgramView(){
-        
     }
     
     public void startProgram () {

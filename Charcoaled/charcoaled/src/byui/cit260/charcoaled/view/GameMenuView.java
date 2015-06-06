@@ -11,6 +11,9 @@ package byui.cit260.charcoaled.view;
  */
 class GameMenuView {
 
+    public GameMenuView() {
+    }
+
     void displayMenu() {
         System.out.println("\n*** displayMenu stub function called ***");
     }

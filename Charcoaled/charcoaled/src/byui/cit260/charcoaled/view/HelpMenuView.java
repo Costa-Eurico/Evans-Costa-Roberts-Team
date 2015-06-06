@@ -13,6 +13,9 @@ import java.util.Scanner;
  */
 public class HelpMenuView {
     
+    public HelpMenuView() {
+    }
+    
     private final String MENU = "\n"
             + "\n*************************************"
             + "\n | Help Menu                        |"

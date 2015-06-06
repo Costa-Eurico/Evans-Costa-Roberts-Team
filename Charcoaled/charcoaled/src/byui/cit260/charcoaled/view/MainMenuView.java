@@ -15,6 +15,9 @@ import java.util.Scanner;
  */
 public class MainMenuView {
 
+    public MainMenuView() {
+    }
+
     private final String MENU = "\n"
             + "\n*************************************"
             + "\n | Main Menu                        |"
