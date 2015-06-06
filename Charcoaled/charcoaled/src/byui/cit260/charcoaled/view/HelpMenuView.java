@@ -5,8 +5,6 @@
  */
 package byui.cit260.charcoaled.view;
 
-import byui.cit260.charcoaled.control.GameControl;
-import charcoaled.Charcoaled;
 import java.util.Scanner;
 
 /**
