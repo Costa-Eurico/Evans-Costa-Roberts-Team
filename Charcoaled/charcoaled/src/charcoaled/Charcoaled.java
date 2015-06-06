@@ -15,7 +15,7 @@ import byui.cit260.charcoaled.model.Map;
 import byui.cit260.charcoaled.model.Resource;
 import byui.cit260.charcoaled.model.Scene;
 import byui.cit260.charcoaled.model.Victim;
-import byui.cit260.charcoaled.view.StartProgram;
+import byui.cit260.charcoaled.view.StartProgramView;
 /**
  *
  * @author ih8pcs
@@ -43,7 +43,7 @@ public class Charcoaled {
     
     public static void main(String[] args) {
         //create StartProgram and start the program
-        StartProgram startProgram = new StartProgram();
+        StartProgramView startProgram = new StartProgramView();
         startProgram.startProgram();
         
     }
