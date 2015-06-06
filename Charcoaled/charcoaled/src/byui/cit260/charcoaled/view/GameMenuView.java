@@ -9,7 +9,7 @@ package byui.cit260.charcoaled.view;
  *
  * @author ih8pcs
  */
-class GameMenu {
+class GameMenuView {
 
     void displayMenu() {
         System.out.println("\n*** displayMenu stub function called ***");
