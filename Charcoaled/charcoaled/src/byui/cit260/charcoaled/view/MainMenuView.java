@@ -13,7 +13,7 @@ import java.util.Scanner;
  *
  * @author ih8pcs
  */
-public class MainMenu {
+public class MainMenuView {
 
     private final String MENU = "\n"
             + "\n*************************************"
@@ -92,8 +92,7 @@ public class MainMenu {
         //create new game
         GameControl.createNewGame(Charcoaled.getPlayer());
         
-        GameMenu gameMenu;
-        gameMenu = new GameMenu();
+        GameMenuView gameMenu = new GameMenuView();
         gameMenu.displayMenu();
     }
 
@@ -102,7 +101,8 @@ public class MainMenu {
     }
 
     private void displayHelpMenu() {
-        System.out.println("*** displayHelpMenu function called ***");
+        HelpMenuView helpMenu = new HelpMenuView();
+        helpMenu.displayMenu();
     }
 
     private void saveGame() {
@@ -110,7 +110,3 @@ public class MainMenu {
     }
 
 }
-
-   
-    
-
