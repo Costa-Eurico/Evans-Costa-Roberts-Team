@@ -23,7 +23,7 @@ public class HelpMenuView {
             + "\n O - What is the objective of the game (how to win)?"
             + "\n M - How to move between doors and floors?"
             + "\n D - What are the differences between each difficulty level?"
-            + "\n R - Return to the main menu";
+            + "\n R - Return to the main menu ";
             
     
     public void displayMenu() {
