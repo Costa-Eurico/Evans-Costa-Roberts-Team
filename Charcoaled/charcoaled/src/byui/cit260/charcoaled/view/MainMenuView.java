@@ -26,6 +26,7 @@ public class MainMenuView {
             + "\n G - Saved Game"
             + "\n H - Help Menu"
             + "\n S - Save Game"
+            + "\n X - High Scores"
             + "\n E - Exit Game";
             
     
@@ -85,10 +86,14 @@ public class MainMenuView {
                 break;
             case 'e': //exit the program
                 return;
+            case 'x':
+                this.highScores();
             default:
                 System.out.println("\n*** Invalid selection, please try again. ***");
                 break;
         }
+        
+        
     }
 
     private void startNewGame() {
@@ -98,10 +103,59 @@ public class MainMenuView {
         GameMenuView gameMenu = new GameMenuView();
         gameMenu.displayMenu();
     }
-
-    private void startExistingGame() {
-         System.out.println("*** startExistingGame function called ***");
+    
+    private void highScores() {
+        String[] highScorePlayer = new String[10];
+        String returnToMainMenu = "Press 'R' to return to Main Menu";
+        int i = 0;
+        do {
+            System.out.println("\n " + i + ". " + highScorePlayer[i]);
+            i++;
+        } while (i < 10);
+        /*
+        String highScoreList = "\n"
+        + "\n******************************************************************"
+        + "\n| High Scores                                                    |"
+        + "\n******************************************************************"
+        + "\n 1. " + highScorePlayer[0]
+        + "\n 2. " + highScorePlayer[1]
+        + "\n 3. " + highScorePlayer[2]
+        + "\n 4. " + highScorePlayer[3]
+        + "\n 5. " + highScorePlayer[4]
+        + "\n 6. " + highScorePlayer[5]
+        + "\n 7. " + highScorePlayer[6]
+        + "\n 8. " + highScorePlayer[7]
+        + "\n 9. " + highScorePlayer[8]
+        + "\n 10. " + highScorePlayer[9]
+        + returnToMainMenu;
+        */
+        System.out.println(returnToMainMenu);
     }
+    
+    
+    private void startExistingGame() {
+        String successMsg = "Successfully loaded game ";
+        String errorMsg = "Error";
+        String fileName;
+        Scanner input = new Scanner(System.in);
+ 
+        System.out.println("Please enter your saved filename.txt : ");
+        fileName = input.next(); // getting a String value
+        
+        if (fileName.length() <= 1) {
+            System.out.println(errorMsg + " filename must be at least 2 characters");
+            int i = 0;
+            while (i < 10) {
+                System.out.println("You have " + i + " of 10 attempts remaining");
+                i++;
+            }
+        } else {
+            System.out.println(successMsg);
+        }
+
+    
+    }
+    
 
     private void displayHelpMenu() {
         HelpMenuView helpMenu = new HelpMenuView();
@@ -111,5 +165,6 @@ public class MainMenuView {
     private void saveGame() {
         System.out.println("*** saveGame function called ***");
     }
+
 
 }
