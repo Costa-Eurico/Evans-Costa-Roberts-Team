@@ -26,7 +26,7 @@ class GameMenuView {
             + "\n A - Move to the door to the left"
             + "\n S - Move down the stairs"
             + "\n D - Move to the door to the right"
-            + "\n E - Enter through the door into the appartment"
+            + "\n E - Enter through the door into the apartment"
             + "\n V - View Items in inventory"
             + "\n J - Drop/Remove Item"
             + "\n P - Pause Game"
@@ -88,6 +88,24 @@ class GameMenuView {
             case 's':
                 this.moveDownStairs();
                 break;    
+            case 'd':
+                this.moveToDoorToTheRight();
+                break;   
+            case 'e':
+                this.enterThroughDoor();
+                break;
+            case 'v':
+                this.viewItemsInventory();
+                break;
+            case 'j':
+                this.dropItem();
+                break;
+            case 'p':
+                this.pauseGame();
+                break;
+            case 'g':
+                this.saveGame();
+                break;
             case 'x': //return to main menu
                 return;
             default:
@@ -110,5 +128,29 @@ class GameMenuView {
 
     private void moveDownStairs() {
         System.out.println("*** moveDownStairs function called ***");
+    }
+
+    private void moveToDoorToTheRight() {
+        System.out.println("*** moveToDoorToTheRight function called ***");
+    }
+
+    private void enterThroughDoor() {
+        System.out.println("*** enterThroughDoor function called ***");
+    }
+
+    private void viewItemsInventory() {
+        System.out.println("*** viewItemsInventory function called ***");
+    }
+
+    private void dropItem() {
+        System.out.println("*** dropItem function called ***");
+    }
+
+    private void pauseGame() {
+        System.out.println("*** pauseGame function called ***");
+    }
+
+    private void saveGame() {
+        System.out.println("*** saveGame function called ***");
     }
 }
