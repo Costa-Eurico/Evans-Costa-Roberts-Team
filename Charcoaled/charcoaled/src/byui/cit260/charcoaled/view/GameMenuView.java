@@ -5,6 +5,8 @@
  */
 package byui.cit260.charcoaled.view;
 
+import byui.cit260.charcoaled.control.GameControl;
+import charcoaled.Charcoaled;
 import java.util.Scanner;
 
 /**
@@ -151,6 +153,26 @@ class GameMenuView {
     }
 
     private void saveGame() {
-        System.out.println("*** saveGame function called ***");
+        //System.out.println("*** saveGame function called ***"); 
+        String errorMessage = "Error - ";
+        String gameName; 
+        Scanner input = new Scanner(System.in);
+        
+        System.out.println("Input name to save your game."); 
+        gameName = input.next(); // getting a String value
+        
+        if (gameName.length() <= 1) { 
+            System.out.println(errorMessage + "Game name must be at least 2 characters"); 
+        }
+        else{
+           System.out.println(gameName + " will be the name of your saved game");  
+           int i = 0;
+           while (i < 1) {
+               GameControl.gameFolder(Charcoaled.getCurrentGame());
+               i++;
+               
+           }
+                  
+        }
     }
 }

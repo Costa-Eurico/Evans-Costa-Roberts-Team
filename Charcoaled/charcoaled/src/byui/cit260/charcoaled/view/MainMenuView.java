@@ -82,9 +82,6 @@ public class MainMenuView {
             case 'h': //display help menu
                 this.displayHelpMenu();
                 break;
-            case 's': //save current game
-                this.saveGame();
-                break;
             case 'e': //exit the program
                 return;
             case 'x':
@@ -162,21 +159,6 @@ public class MainMenuView {
         HelpMenuView helpMenu = new HelpMenuView();
         helpMenu.displayMenu();
     }
+}
 
-    private void saveGame() {
-        //System.out.println("*** saveGame function called ***"); 
-        String gameName; 
-        Scanner input = new Scanner(System.in);
-        
-        System.out.println("Input name to save your game."); 
-        gameName = input.next(); // getting a String value
-        
-        if (gameName.length() <= 1) {
-            System.out.println("Game name must be at least 2 characters");
-        }
-        else{
-           System.out.println(gameName +" will be the name of your saved game"); 
-        }
-    }
 
-    }
