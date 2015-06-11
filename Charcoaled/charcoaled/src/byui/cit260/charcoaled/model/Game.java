@@ -6,6 +6,7 @@
 package byui.cit260.charcoaled.model;
 
 import java.io.Serializable;
+import java.util.Scanner;
 
 /**
  *
@@ -106,6 +107,5 @@ public class Game implements Serializable {
         }
         return true;
     }
-    
-    
+
 }
