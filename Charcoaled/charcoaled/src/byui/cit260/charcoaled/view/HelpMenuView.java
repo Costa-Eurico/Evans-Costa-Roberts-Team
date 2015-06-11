@@ -23,7 +23,7 @@ public class HelpMenuView {
             + "\n O - What is the objective of the game (how to win)?"
             + "\n M - How to move between doors and floors?"
             + "\n D - What are the differences between each difficulty level?"
-            + "\n R - Return to the main menu ";
+            + "\n X - Return to the main menu ";
             
     
     public void displayMenu() {
@@ -37,7 +37,7 @@ public class HelpMenuView {
             selection = input.charAt(0); //get first character of string
             
             this.doAction(selection); //do action based on selection
-        } while (Character.toLowerCase(selection) != 'r'); // a selection is not "return to main menu"
+        } while (Character.toLowerCase(selection) != 'x'); // a selection is not "return to main menu"
     }
 
     private String getInput() {
@@ -77,7 +77,7 @@ public class HelpMenuView {
             case 'd': //differences between levels of difficulty
                 this.displayDiffLevelsOfDifficulty();
                 break;
-            case 'r': //return to main menu
+            case 'x': //return to main menu
                 return;
             default:
                 System.out.println("\n*** Invalid selection, please try again. ***");
