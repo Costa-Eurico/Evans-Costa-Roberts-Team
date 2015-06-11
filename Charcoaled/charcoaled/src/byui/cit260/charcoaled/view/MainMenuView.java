@@ -6,7 +6,6 @@
 package byui.cit260.charcoaled.view;
 
 import byui.cit260.charcoaled.control.GameControl;
-import byui.cit260.charcoaled.model.Game;
 import charcoaled.Charcoaled;
 import java.util.Scanner;
 
@@ -26,7 +25,6 @@ public class MainMenuView {
             + "\n N - New Game"
             + "\n G - Saved Game"
             + "\n H - Help Menu"
-            + "\n S - Save Game"
             + "\n X - High Scores"
             + "\n E - Exit Game";
             
@@ -98,7 +96,7 @@ public class MainMenuView {
         //create new game
         GameControl.createNewGame(Charcoaled.getPlayer());
         
-        GameMenuView gameMenu = new GameMenuView();
+        GameMenuView gameMenu = new GameMenuView(Charcoaled.getPlayer());
         gameMenu.displayMenu();
     }
     
@@ -149,12 +147,12 @@ public class MainMenuView {
             }
         } else {
             System.out.println(successMsg);
+            
+            GameMenuView gameMenu = new GameMenuView(Charcoaled.getPlayer());
+            gameMenu.displayMenu();
         }
-
-    
     }
     
-
     private void displayHelpMenu() {
         HelpMenuView helpMenu = new HelpMenuView();
         helpMenu.displayMenu();

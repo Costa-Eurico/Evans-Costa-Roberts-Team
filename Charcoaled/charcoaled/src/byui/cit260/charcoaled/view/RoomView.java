@@ -14,16 +14,15 @@ import java.util.Scanner;
 public class RoomView {
  
     private final String MENU = "\n"
-           + "\n******************************************************************"
+            + "\n******************************************************************"
             + "\n| Room Menu                                                      |"
             + "\n******************************************************************"
-            + "\n E - Enter Room"
-            + "\n V - Save Victim"
             + "\n S - Search Room"
+            + "\n V - Save Victim"
             + "\n P - Pick up Resources"
             + "\n D - Discard Resources"
             + "\n O - Remove Obstacle"
-            + "\n R - Exit Room Menu";
+            + "\n X - Exit Room";
             
     
     public void displayMenu() {
@@ -37,7 +36,7 @@ public class RoomView {
             selection = input.charAt(0); //get first character of string
             
             this.doAction(selection); //do action based on selection
-        } while (Character.toLowerCase(selection) != 'r'); // a selection is not "return to main menu"
+        } while (Character.toLowerCase(selection) != 'x'); // a selection is not "return to main menu"
     }
 
     private String getInput() {
@@ -68,25 +67,22 @@ public class RoomView {
     private void doAction(char choice) {
         
         switch (Character.toLowerCase(choice)) {
-            case 'e': //enter room
-                this.enterRoom();
-                break;
             case 'v': //save the vistim
                 this.saveVictim();
                 break;
             case 's': //search the room 
                 this.searchRoom();
                 break;
-                case 'p': //pick up available resources
+            case 'p': //pick up available resources
                 this.pickUpResources();
                 break;
-            case 'D': //discard resources
+            case 'd': //discard resources
                 this.discardResources();
                 break;
-            case 'O': //remove obstacle in your way
+            case 'o': //remove obstacle in your way
                 this.removeObstacle();
                 break;
-            case 'r': //return to main menu
+            case 'x': //return to main menu
                 return;
             default:
                 System.out.println("\n*** Invalid selection, please try again. ***");
@@ -94,12 +90,9 @@ public class RoomView {
         }
     }
 
-    private void enterRoom() {
-        System.out.println("*** enterRoom function called ***");
-    }
-
     private void saveVictim() {
-        System.out.println("*** saveVictim function called ***");
+        RescueVictimView rescueVictim = new RescueVictimView();
+        rescueVictim.display();
     }
 
     private void searchRoom() {
@@ -117,5 +110,4 @@ public class RoomView {
     private void removeObstacle() {
         System.out.println("*** removeResources function called ***");
     }
-    
 }

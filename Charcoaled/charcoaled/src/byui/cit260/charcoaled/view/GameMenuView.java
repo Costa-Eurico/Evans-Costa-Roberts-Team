@@ -6,6 +6,7 @@
 package byui.cit260.charcoaled.view;
 
 import byui.cit260.charcoaled.control.GameControl;
+import byui.cit260.charcoaled.model.Player;
 import charcoaled.Charcoaled;
 import java.util.Scanner;
 
@@ -14,9 +15,11 @@ import java.util.Scanner;
  * @author ih8pcs
  */
 class GameMenuView {
+    
+    private final Player gamePlayer;
 
-    public GameMenuView() {
-        
+    public GameMenuView(Player player) {
+        gamePlayer = player;
     }
 
     private final String MENU = "\n"
@@ -94,7 +97,7 @@ class GameMenuView {
                 this.moveToDoorToTheRight();
                 break;   
             case 'e':
-                this.enterThroughDoor();
+                this.enterThroughDoor(gamePlayer);
                 break;
             case 'v':
                 this.viewItemsInventory();
@@ -136,8 +139,11 @@ class GameMenuView {
         System.out.println("*** moveToDoorToTheRight function called ***");
     }
 
-    private void enterThroughDoor() {
-        System.out.println("*** enterThroughDoor function called ***");
+    private void enterThroughDoor(Player gamePlayer) {
+        System.out.println("*** " + gamePlayer.getName() + ", you are entering the selected room.  ***");
+        
+        RoomView room = new RoomView();
+        room.displayMenu();
     }
 
     private void viewItemsInventory() {
@@ -165,7 +171,7 @@ class GameMenuView {
             System.out.println(errorMessage + "Game name must be at least 2 characters"); 
         }
         else{
-           System.out.println(gameName + " will be the name of your saved game");  
+           System.out.println("'" + gameName + "' will be the name of your saved game");  
            int i = 0;
            while (i < 1) {
                GameControl.gameFolder(Charcoaled.getCurrentGame());
