@@ -9,21 +9,20 @@ import java.util.Scanner;
 
 /**
  *
- * @author eucosta
+ * @author ih8pcs
  */
-public class HelpMenuView {
-    
-    public HelpMenuView() {
-    }
-    
+public class RoomView {
+ 
     private final String MENU = "\n"
-           + "\n******************************************************************"
-            + "\n| Help Menu                                                      |"
             + "\n******************************************************************"
-            + "\n O - What is the objective of the game (how to win)?"
-            + "\n M - How to move between doors and floors?"
-            + "\n D - What are the differences between each difficulty level?"
-            + "\n X - Return to the main menu ";
+            + "\n| Room Menu                                                      |"
+            + "\n******************************************************************"
+            + "\n S - Search Room"
+            + "\n V - Save Victim"
+            + "\n P - Pick up Resources"
+            + "\n D - Discard Resources"
+            + "\n O - Remove Obstacle"
+            + "\n X - Exit Room";
             
     
     public void displayMenu() {
@@ -48,7 +47,7 @@ public class HelpMenuView {
         while (!valid) { //while valid name has not been retrieved
             
             //prompt for player's name
-            System.out.println("Enter choice from the Help Menu:");
+            System.out.println("Enter choice from the Room Menu:");
             
             //get the name from the keyboard and trim off blanks
             playerInput = keyboard.nextLine();
@@ -56,7 +55,7 @@ public class HelpMenuView {
             
             //if the name is invalid (< 1 characters)
             if (playerInput.length() < 1) {
-                System.out.println("Invalid request - please enter one of the Help Menu Options");
+                System.out.println("Invalid request - please enter one of the Room Menu Options");
                 continue; //and repeat again
             }
             break; // out of the repetition
@@ -68,14 +67,20 @@ public class HelpMenuView {
     private void doAction(char choice) {
         
         switch (Character.toLowerCase(choice)) {
-            case 'o': //display game objective
-                this.displayGameObjective();
+            case 'v': //save the vistim
+                this.saveVictim();
                 break;
-            case 'm': //how to move around the game
-                this.displayMoveInstructions();
+            case 's': //search the room 
+                this.searchRoom();
                 break;
-            case 'd': //differences between levels of difficulty
-                this.displayDiffLevelsOfDifficulty();
+            case 'p': //pick up available resources
+                this.pickUpResources();
+                break;
+            case 'd': //discard resources
+                this.discardResources();
+                break;
+            case 'o': //remove obstacle in your way
+                this.removeObstacle();
                 break;
             case 'x': //return to main menu
                 return;
@@ -85,16 +90,24 @@ public class HelpMenuView {
         }
     }
 
-    private void displayGameObjective() {
-        System.out.println("*** displayGameObjective function called ***");
+    private void saveVictim() {
+        RescueVictimView rescueVictim = new RescueVictimView();
+        rescueVictim.display();
     }
 
-    private void displayMoveInstructions() {
-        System.out.println("*** displayMoveInstructions function called ***");
+    private void searchRoom() {
+        System.out.println("*** searchRoom function called ***");
     }
 
-    private void displayDiffLevelsOfDifficulty() {
-        System.out.println("*** displayDiffLevelsOfDifficulty function called ***");
+    private void pickUpResources() {
+        System.out.println("*** pickUpResources function called ***");
     }
-    
+
+    private void discardResources() {
+        System.out.println("*** discardResources function called ***");
+    }
+
+    private void removeObstacle() {
+        System.out.println("*** removeResources function called ***");
+    }
 }
