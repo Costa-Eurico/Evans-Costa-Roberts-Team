@@ -5,10 +5,6 @@
  */
 package byui.cit260.charcoaled.control;
 
-/**
- *
- * @author ih8pcs
- */
     
 public class ActorControl {
     
