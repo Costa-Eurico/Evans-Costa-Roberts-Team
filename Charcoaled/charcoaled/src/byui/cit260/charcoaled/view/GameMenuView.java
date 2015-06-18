@@ -14,15 +14,14 @@ import java.util.Scanner;
  *
  * @author ih8pcs
  */
-class GameMenuView {
+class GameMenuView extends View {
     
     private final Player gamePlayer;
 
     public GameMenuView(Player player) {
         gamePlayer = player;
-    }
 
-    private final String MENU = "\n"
+        promptMessage = "\n"
            + "\n******************************************************************"
             + "\n| Game Menu                                                      |"
             + "\n******************************************************************"
@@ -37,48 +36,11 @@ class GameMenuView {
             + "\n P - Pause Game"
             + "\n G - Save Game"
             + "\n X - Return to the main menu ";
-            
-    
-    public void displayMenu() {
-        
-        char selection = ' ';
-        do {
-            
-            System.out.println(MENU); //display help menu
-            
-            String input = this.getInput(); //get the user's selection
-            selection = input.charAt(0); //get first character of string
-            
-            this.doAction(selection); //do action based on selection
-        } while (Character.toLowerCase(selection) != 'x'); // a selection is not "return to main menu"
-    }
-
-    private String getInput() {
-        boolean valid = false; //indicates if name has been retrieved
-        String playerInput = null;
-        Scanner keyboard = new Scanner(System.in); //keyboard input stream
-        
-        while (!valid) { //while valid name has not been retrieved
-            
-            //prompt for player's name
-            System.out.println("Enter choice from the Help Menu:");
-            
-            //get the name from the keyboard and trim off blanks
-            playerInput = keyboard.nextLine();
-            playerInput = playerInput.trim();
-            
-            //if the name is invalid (< 1 characters)
-            if (playerInput.length() < 1) {
-                System.out.println("Invalid request - please enter one of the Help Menu Options");
-                continue; //and repeat again
-            }
-            break; // out of the repetition
         }
-        
-        return playerInput; //return name
-    }
-
-    private void doAction(char choice) {
+    
+    
+    @Override
+    public void doAction(char choice) {
         
         switch (Character.toLowerCase(choice)) {
             case 'm': //display map
@@ -143,7 +105,7 @@ class GameMenuView {
         System.out.println("*** " + gamePlayer.getName() + ", you are entering the selected room.  ***");
         
         RoomView room = new RoomView();
-        room.displayMenu();
+        room.display();
     }
 
     private void viewItemsInventory() {
