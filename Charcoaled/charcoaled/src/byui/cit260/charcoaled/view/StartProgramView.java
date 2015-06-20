@@ -13,9 +13,10 @@ import java.util.Scanner;
  *
  * @author ih8pcs
  */
-public class StartProgramView {
+public class StartProgramView extends View{
     
     public StartProgramView(){
+        promptMessage = "Enter the player's name below:";
     }
     
     public void startProgram () {
@@ -24,7 +25,7 @@ public class StartProgramView {
         this.displayBanner();
         
         //prompt player to enter name-Retrieve name of play
-        String playersName = this.getPlayersName();
+        String playersName = this.getInput();
         
         //create and save player object
         Player player = ProgramControl.createPlayer(playersName);
@@ -64,7 +65,8 @@ public class StartProgramView {
         System.out.println("\n******************************************************************");
     }
 
-    public String getPlayersName() {
+    @Override
+    public String getInput() {
         boolean valid = false; //indicates if name has been retrieved
         String playersName = null;
         Scanner keyboard = new Scanner(System.in); //keyboard input stream
