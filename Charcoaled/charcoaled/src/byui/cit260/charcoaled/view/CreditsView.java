@@ -5,16 +5,12 @@
  */
 
 package byui.cit260.charcoaled.view;
-import byui.cit260.charcoaled.control.ProgramControl;
-import byui.cit260.charcoaled.model.Player;
-import java.util.Scanner;
 
 /**
  *
  * @author xyz
  */
-
-public class CreditsView {
+public class CreditsView extends View{
     
     public CreditsView() {
     }
@@ -31,6 +27,7 @@ public class CreditsView {
     }
     
     private void displayCreators() {
+        System.out.println("\n******************************************************************");
         System.out.println("Game developers, creators, and designers");
         System.out.println("Tiffany Evans");
         System.out.println("Eurico Costa");
@@ -41,15 +38,18 @@ public class CreditsView {
         System.out.println("\n******************************************************************");
         System.out.println("Game Credits");
         System.out.println("Charcoaled - 2015");
-        System.out.println("http://github.com/Costa-Eurico/Evans-Costa-Roberts-Team");
-        System.out.println("Special thanks for the BYU-Idaho CIT 260 course "
-                + "developers, instructor, TA, and classmates that helped "
-                + "provide feedback, additional insight and help. Charcoaled "
-                + "is available on GitHub for anyone to download and use as "
-                + "they like. Please provide reference to its original "
-                + "creators. ");
+        System.out.println("http://github.com/Costa-Eurico/Evans-Costa-Roberts-Team \n");
+        System.out.println("Special thanks for the BYU-Idaho CIT 260 course \n"
+                + "developers, instructor, TA, and classmates that helped \n"
+                + "provide feedback, additional insight and help. Charcoaled \n"
+                + "is available on GitHub for anyone to download and use as \n"
+                + "they like. Please provide reference to its original creators. ");
         System.out.println("\n******************************************************************");
     }
     
-
+    @Override
+    public void display() {
+        displayCreators();
+        displayCredits();
+    }
 }

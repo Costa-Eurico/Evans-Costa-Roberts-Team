@@ -24,7 +24,6 @@ public class MainMenuView extends View {
             + "\n G - Saved Game"
             + "\n H - Help Menu"
             + "\n S - High Scores"
-            + "\n C - View Credits"
             + "\n X - Exit Game";
            } 
     
@@ -42,13 +41,10 @@ public class MainMenuView extends View {
                 this.displayHelpMenu();
                 break;
             case 'x': //exit the program
+                creditsView();
                 return;
             case 's':
                 this.highScores();
-            case 'c':
-                this.CreditsView();
-                credits CreditsView = new credits();
-                this.displayCreators();
             default:
                 System.out.println("\n*** Invalid selection, please try again. ***");
                 break;
@@ -66,31 +62,11 @@ public class MainMenuView extends View {
     }
     
     private void highScores() {
-        String[] highScorePlayer = new String[10];
-        String returnToMainMenu = "Press 'R' to return to Main Menu";
-        int i = 0;
+        int i = 1;
         do {
-            System.out.println("\n " + i + ". " + highScorePlayer[i]);
+            System.out.println("\n " + i + ". " + displayPlayerHighScore());
             i++;
-        } while (i < 10);
-        /*
-        String highScoreList = "\n"
-        + "\n******************************************************************"
-        + "\n| High Scores                                                    |"
-        + "\n******************************************************************"
-        + "\n 1. " + highScorePlayer[0]
-        + "\n 2. " + highScorePlayer[1]
-        + "\n 3. " + highScorePlayer[2]
-        + "\n 4. " + highScorePlayer[3]
-        + "\n 5. " + highScorePlayer[4]
-        + "\n 6. " + highScorePlayer[5]
-        + "\n 7. " + highScorePlayer[6]
-        + "\n 8. " + highScorePlayer[7]
-        + "\n 9. " + highScorePlayer[8]
-        + "\n 10. " + highScorePlayer[9]
-        + returnToMainMenu;
-        */
-        System.out.println(returnToMainMenu);
+        } while (i <= 10);
     }
     
     
@@ -122,6 +98,16 @@ public class MainMenuView extends View {
         HelpMenuView helpMenu = new HelpMenuView();
         helpMenu.display();
     }
+
+    private String displayPlayerHighScore() {
+        return "*** called displayPlayerHighScore() ***";
+    }
+    
+    private void creditsView() {
+        CreditsView credits = new CreditsView();
+        credits.display();
+    }
+    
 }
 
 

@@ -13,12 +13,10 @@ import java.util.Scanner;
  *
  * @author eucosta
  */
-public class RescueVictimView {
+public class RescueVictimView extends View{
 
     public RescueVictimView() {
-    }
-    
-    private final String QUESTION = "\n"
+        promptMessage = "\n"
             + "\n******************************************************************"
             + "\n| Saving Victim in the room                                      |"
             + "\n******************************************************************"
@@ -31,7 +29,12 @@ public class RescueVictimView {
             + "\n a challenge question, You'll have three tries to answer the challenge"
             + "\n question correctly: "
             + "\n";
+        
+    }
     
+    
+    
+    @Override
     public void display() {
         double girth;
         int floor;
@@ -40,7 +43,7 @@ public class RescueVictimView {
         int attempts = 3;
         
         do {  
-            System.out.println(QUESTION); //display question
+            System.out.println(promptMessage); //display question
             
             correctAnswer = askChallengeQuestion();
             if(!correctAnswer){
@@ -59,7 +62,7 @@ public class RescueVictimView {
         double ropeLength;
         
         do {
-            double input = this.getInput(); //get the user's girth
+            double input = this.getVictimGirth(); //get the user's girth
             girth = input;
             
             // determine needed rope length. For simplicity, we'll use a fixed floor and floor heigth
@@ -70,13 +73,13 @@ public class RescueVictimView {
                 System.out.println("\n*** Invalid girth. Girth can only be a value between 20 and 40 inches ***");
             }
             else{
-                doAction(ropeLength);
+                doActionAttempSaveVictim(ropeLength);
             }
             
         } while (ropeLength == -1.0);
     }
     
-    private double getInput() {
+    private double getVictimGirth() {
         boolean valid = false; //indicates if name has been retrieved
         String playerInput = null;
         double girth = 0;
@@ -109,7 +112,7 @@ public class RescueVictimView {
         return girth; //return playerInput
     }
     
-    private void doAction(double ropeLength) {
+    private void doActionAttempSaveVictim(double ropeLength) {
        ActorControl actorCtrl = new ActorControl();
        double availableRope;
        
