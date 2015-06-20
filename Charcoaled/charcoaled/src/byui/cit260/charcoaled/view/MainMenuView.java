@@ -24,6 +24,7 @@ public class MainMenuView extends View {
             + "\n G - Saved Game"
             + "\n H - Help Menu"
             + "\n S - High Scores"
+            + "\n C - View Credits"
             + "\n X - Exit Game";
            } 
     
@@ -44,6 +45,10 @@ public class MainMenuView extends View {
                 return;
             case 's':
                 this.highScores();
+            case 'c':
+                this.CreditsView();
+                credits CreditsView = new credits();
+                this.displayCreators();
             default:
                 System.out.println("\n*** Invalid selection, please try again. ***");
                 break;
