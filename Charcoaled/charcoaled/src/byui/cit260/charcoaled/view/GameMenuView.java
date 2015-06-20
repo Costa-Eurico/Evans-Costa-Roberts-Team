@@ -80,11 +80,12 @@ class GameMenuView extends View {
                 break;
         }
     }
-
+    
     private void displayMap() {
-        System.out.println("*** displayMap function called ***");
+        MapView MapView = new MapView();
+        MapView.display();
     }
-
+   
     private void moveUpStairs() {
         System.out.println("*** moveUpStairs function called ***");
     }
