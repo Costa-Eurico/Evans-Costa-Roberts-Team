@@ -45,6 +45,7 @@ public class MainMenuView extends View {
                 return;
             case 's':
                 this.highScores();
+                break;
             default:
                 System.out.println("\n*** Invalid selection, please try again. ***");
                 break;
@@ -102,7 +103,7 @@ public class MainMenuView extends View {
     private String displayPlayerHighScore() {
         return "*** called displayPlayerHighScore() ***";
     }
-    
+ 
     private void creditsView() {
         CreditsView credits = new CreditsView();
         credits.display();
