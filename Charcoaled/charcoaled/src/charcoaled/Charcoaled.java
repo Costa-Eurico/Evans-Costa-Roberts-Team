@@ -12,7 +12,6 @@ import byui.cit260.charcoaled.model.Location;
 import byui.cit260.charcoaled.model.Obstacle;
 import byui.cit260.charcoaled.model.Player;
 import byui.cit260.charcoaled.model.Map;
-import byui.cit260.charcoaled.model.Resource;
 import byui.cit260.charcoaled.model.Scene;
 import byui.cit260.charcoaled.model.Victim;
 import byui.cit260.charcoaled.view.StartProgramView;
