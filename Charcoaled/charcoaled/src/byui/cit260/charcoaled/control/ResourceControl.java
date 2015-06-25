@@ -10,5 +10,17 @@ package byui.cit260.charcoaled.control;
  * @author ih8pcs
  */
 public class ResourceControl {
+
+    void setDescription(String axe) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    void setQuantityInStock(int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    void setRequiredAmount(int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

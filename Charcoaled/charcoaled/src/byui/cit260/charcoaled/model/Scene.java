@@ -19,6 +19,8 @@ public class Scene implements Serializable{
     private String description;
     private int victims;
 
+    private Victim victim;
+    
     public String getName() {
         return name;
     }
@@ -79,6 +81,14 @@ public class Scene implements Serializable{
             return false;
         }
         return true;
+    }
+
+    public Victim getVictim() {
+        return victim;
+    }
+
+    public void setVictim(Victim victim) {
+        this.victim = victim;
     }
 
 }

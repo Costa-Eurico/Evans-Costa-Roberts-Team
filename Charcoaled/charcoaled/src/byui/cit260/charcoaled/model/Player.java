@@ -18,6 +18,8 @@ public class Player implements Serializable{
     private String name;
     private double highScore;
 
+    private Actor actor;
+    private Game[] game;
     public Player() {
     }
 
@@ -67,6 +69,22 @@ public class Player implements Serializable{
             return false;
         }
         return true;
+    }
+
+    public Actor getActor() {
+        return actor;
+    }
+
+    public void setActor(Actor actor) {
+        this.actor = actor;
+    }
+
+    public Game[] getGame() {
+        return game;
+    }
+
+    public void setGame(Game[] game) {
+        this.game = game;
     }
     
     

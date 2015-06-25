@@ -19,6 +19,9 @@ public class Victim implements Serializable{
     private String description;
     private Location coordinates = new Location();
 
+    private Obstacle obstacle;
+    
+    
     public String getStatus() {
         return status;
     }
@@ -79,6 +82,14 @@ public class Victim implements Serializable{
             return false;
         }
         return true;
+    }
+
+    public Obstacle getObstacle() {
+        return obstacle;
+    }
+
+    public void setObstacle(Obstacle obstacle) {
+        this.obstacle = obstacle;
     }
     
     

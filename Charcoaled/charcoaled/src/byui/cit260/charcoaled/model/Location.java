@@ -19,7 +19,11 @@ public class Location implements Serializable{
     private int visited;
     private int roomsRemaining;
     private int type;
-
+    
+    private Scene scene;
+    private Obstacle obstacle;
+    private Actor[] actor;
+    
     public Location() {
     }
     
@@ -105,6 +109,22 @@ public class Location implements Serializable{
             return false;
         }
         return true;
+    }
+
+    public Scene getScene() {
+        return scene;
+    }
+
+    public Obstacle getObstacle() {
+        return obstacle;
+    }
+
+    public void setScene(Scene scene) {
+        this.scene = scene;
+    }
+
+    public void setObstacle(Obstacle obstacle) {
+        this.obstacle = obstacle;
     }
 
     

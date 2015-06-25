@@ -16,8 +16,15 @@ public class Map implements Serializable{
     private int stairCount;
     private int doorCount;
     private int roomCount;
-
+    
+    private Location location;
+    private Game[] game;
+    
     public Map() {
+    }
+
+    public Map(int i, int i0) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     
@@ -79,6 +86,14 @@ public class Map implements Serializable{
             return false;
         }
         return true;
+    }
+
+    public Game[] getGame() {
+        return game;
+    }
+
+    public void setGame(Game[] game) {
+        this.game = game;
     }
     
     

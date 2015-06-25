@@ -5,6 +5,7 @@
  */
 package byui.cit260.charcoaled.model;
 
+import byui.cit260.charcoaled.control.ResourceControl;
 import java.io.Serializable;
 import java.util.Scanner;
 
@@ -20,7 +21,11 @@ public class Game implements Serializable {
     private double loseTime;
     private double countSavedVictims;
     private double countLostVictims;
-
+    
+    private Map map;
+    private Player player;
+    
+    
     public Game() {
     }
 
@@ -106,6 +111,26 @@ public class Game implements Serializable {
             return false;
         }
         return true;
+    }
+
+    public Map getMap() {
+        return map;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setMap(Map map) {
+        this.map = map;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public void setItem(ResourceControl[] itemList) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
