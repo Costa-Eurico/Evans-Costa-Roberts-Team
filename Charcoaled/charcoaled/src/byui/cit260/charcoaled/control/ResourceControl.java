@@ -12,15 +12,15 @@ package byui.cit260.charcoaled.control;
 public class ResourceControl {
 
     void setDescription(String axe) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("*** called ResourceControl.setDescription(String axe)"); 
     }
 
     void setQuantityInStock(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("*** called ResourceControl.setQuantityInStock(int i)");
     }
 
     void setRequiredAmount(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("*** called ResourceControl.setRequiredAmount(int i)");
     }
     
 }

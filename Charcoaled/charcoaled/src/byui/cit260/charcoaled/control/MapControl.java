@@ -28,15 +28,16 @@ public class MapControl {
     }
 
     static void moveActorsToStartingLocation(Map map) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("*** called MapControl.moveActorsToStartingLocation(Map map)***");
     }
 
     private static Scene[] createScenes() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("*** called MapControl.createScenes()***");
+        return null;
     }
 
     private static void assignScenesToLocations(Map map, Scene[] scenes) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("*** called MapControl.assignScenesToLocations(Map map, Scene[] scenes)***");
     }
     
 }
