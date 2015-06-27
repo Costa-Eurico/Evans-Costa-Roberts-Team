@@ -10,6 +10,7 @@ import byui.cit260.charcoaled.model.Item;
 import byui.cit260.charcoaled.model.Map;
 import byui.cit260.charcoaled.model.Player;
 import charcoaled.Charcoaled;
+import java.util.List;
 
 public class GameControl {
   
@@ -70,7 +71,37 @@ public class GameControl {
         resource[Item.FireProofBlanket.ordinal()] = fireProofBlanket;
         
         return resource;
+    }
+    
+    public static Item[] getSortedInventoryList() {
+    
+        // get inventory list for the current game
+        Item[] originalInventoryList =
+                Charcoaled.getCurrentGame().getInventory();
         
+        // clone (make a copy) originalList
+        Item[] inventoryList = originalInventoryList.clone();
+        
+        // using a BubbleSort to sort the list of inventoryList by name
+        Item tempInventoryItem;
+        for (int i = 0; i < inventoryList.length-1; i++) {
+            for (int j = 0; j < inventoryList.length-1-i; j++) {
+                if (inventoryList[j].getDescription().compareToIgnoreCase(inventoryList[j + 1].getDescription()) > 0) {
+                    tempInventoryItem = inventoryList[j];
+                    inventoryList[j] = inventoryList[j+1];
+                    inventoryList[j+1] = tempInventoryItem;
+                }
+            }
+        }
+        return inventoryList;
+    }
+    
+    private int sumOfList(List<Integer> numbers){
+        int sum = 0;
+        for (int i : numbers){
+            sum += i;
+        }
+        return sum;
     }
 
 }

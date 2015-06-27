@@ -7,6 +7,7 @@ package byui.cit260.charcoaled.control;
 
 import byui.cit260.charcoaled.model.Map;
 import byui.cit260.charcoaled.model.Scene;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -39,5 +40,9 @@ public class MapControl {
     private static void assignScenesToLocations(Map map, Scene[] scenes) {
         System.out.println("*** called MapControl.assignScenesToLocations(Map map, Scene[] scenes)***");
     }
-    
+
+    public static ImageIcon getImage(Scene startingScene, String path_to_imagestartingPointjpg) {
+        System.out.println("*** called getImage(Scene startingScene, String path_to_imagestartingPointjpg) ***");
+        return null;
+    }
 }

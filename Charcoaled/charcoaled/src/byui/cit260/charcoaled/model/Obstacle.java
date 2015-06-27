@@ -21,23 +21,20 @@ public enum Obstacle implements Serializable{
     UncooperativeVictim("Screaming Victim"),
     UnconsciousVictim("Victim has passed out"),
     Pet("Save the dog");
-
     
     private final String description;
     private final Point coordinates;
-
 
     Obstacle(String description) {
         this.description = description;
         coordinates = new Point(1,1);
     }  
     
-     public String getDescription(){
+    public String getDescription(){
         return description;
     }
     
     public Point getCoordinates(){
         return coordinates;
     }
-    
 }

@@ -6,6 +6,7 @@
 package byui.cit260.charcoaled.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,11 +17,12 @@ public class Location implements Serializable{
     //class instance variables
     private int row;
     private int column;
-    private int visited;
+    private boolean visited;
     private int roomsRemaining;
     private int type;
     
     private Scene scene;
+    private ArrayList<Actor> actors;
     private Obstacle obstacle;
     private Actor[] actor;
     
@@ -44,11 +46,11 @@ public class Location implements Serializable{
         this.column = column;
     }
 
-    public int getVisited() {
+    public boolean getVisited() {
         return visited;
     }
 
-    public void setVisited(int visited) {
+    public void setVisited(boolean visited) {
         this.visited = visited;
     }
 
@@ -75,14 +77,15 @@ public class Location implements Serializable{
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 47 * hash + this.row;
-        hash = 47 * hash + this.column;
-        hash = 47 * hash + this.visited;
-        hash = 47 * hash + this.roomsRemaining;
-        hash = 47 * hash + this.type;
+        int hash = 3;
+        hash = 41 * hash + this.row;
+        hash = 41 * hash + this.column;
+        hash = 41 * hash + (this.visited ? 1 : 0);
+        hash = 41 * hash + this.roomsRemaining;
+        hash = 41 * hash + this.type;
         return hash;
     }
+
 
     @Override
     public boolean equals(Object obj) {
@@ -110,6 +113,26 @@ public class Location implements Serializable{
         }
         return true;
     }
+    
+     private Map[] map;
+    /* does this need getter/setter? l09 pg 10 */
+    /* double check the cardinality here */
+
+    public void setScene(Scene scene) {
+        this.scene = scene;
+    }
+
+    public void setActors(ArrayList<Actor> actors) {
+        this.actors = actors;
+    }
+
+    public void setObstacle(Obstacle obstacle) {
+        this.obstacle = obstacle;
+    }
+
+    public ArrayList<Actor> getActors() {
+        return actors;
+    }
 
     public Scene getScene() {
         return scene;
@@ -118,16 +141,4 @@ public class Location implements Serializable{
     public Obstacle getObstacle() {
         return obstacle;
     }
-
-    public void setScene(Scene scene) {
-        this.scene = scene;
-    }
-
-    public void setObstacle(Obstacle obstacle) {
-        this.obstacle = obstacle;
-    }
-
-    
-    
-    
 }

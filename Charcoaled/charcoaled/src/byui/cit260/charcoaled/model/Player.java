@@ -20,6 +20,7 @@ public class Player implements Serializable{
 
     private Actor actor;
     private Game[] game;
+    
     public Player() {
     }
 
