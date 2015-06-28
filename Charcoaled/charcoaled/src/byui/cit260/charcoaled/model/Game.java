@@ -26,6 +26,7 @@ public class Game implements Serializable {
     private Player player;
     
     
+    
     public Game() {
     }
 

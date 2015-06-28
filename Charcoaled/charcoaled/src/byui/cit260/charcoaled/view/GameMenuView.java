@@ -6,6 +6,9 @@
 package byui.cit260.charcoaled.view;
 
 import byui.cit260.charcoaled.control.GameControl;
+import byui.cit260.charcoaled.model.Item;
+import byui.cit260.charcoaled.model.Location;
+import byui.cit260.charcoaled.model.Map;
 import byui.cit260.charcoaled.model.Player;
 import charcoaled.Charcoaled;
 import java.util.Scanner;
@@ -82,8 +85,46 @@ class GameMenuView extends View {
     }
     
     private void displayMap() {
-        MapView MapView = new MapView();
-        MapView.display();
+        //MapView MapView = new MapView();
+        //MapView.display();
+        
+        Map map = Charcoaled.getCurrentGame().getMap();
+        Location[][] locations = map.getLocations();
+        
+        String strTitle = "\n" +
+                          "\n**************************"
+                        + "\n| Your current game map  |"
+                        + "\n**************************";
+        
+        System.out.println(strTitle); //display title
+        //display row of column numbers
+        
+        System.out.println("\n---------------------------------------------------------------");
+        System.out.print("  |");
+        for(int i=1; i <= locations.length; i++){
+            System.out.print("  " + i + "  |");
+        }
+        
+        System.out.println("");
+        Location location;
+       
+        for(int row = 0; row < locations[0].length; row++){
+            System.out.println("\n---------------------------------------------------------------");
+            System.out.print((row + 1) + " | ");
+            
+            for(int col = 0; col < locations.length; col++){
+                location = locations[row][col];
+
+                if(location.getVisited()){
+                    System.out.print(" V  ");
+                }
+                else{
+                    System.out.print(" ??  ");
+                }
+                System.out.print("|");
+            }
+        }
+        System.out.println("\n---------------------------------------------------------------");
     }
    
     private void moveUpStairs() {
@@ -110,7 +151,21 @@ class GameMenuView extends View {
     }
 
     private void viewItemsInventory() {
-        System.out.println("*** viewItemsInventory function called ***");
+        // get the sorted list of inventory items for the current game
+        Item[] inventory = GameControl.getSortedInventoryList();
+        
+        System.out.println("\nList of Inventory Items");
+        System.out.println("Description" + "\t" +
+                            "Required" + "\t" +
+                            "In Stock");
+        
+        // for each inventory item
+        for (Item inventoryItem : inventory) {
+            //DISPLAY the description, the required amount and amount in stock
+            System.out.println(inventoryItem.getDescription() + "\t    " +
+                                inventoryItem.getCoordinates()+ "\t    " +
+                                inventoryItem.name());
+        } 
     }
 
     private void dropItem() {

@@ -5,8 +5,12 @@
  */
 package byui.cit260.charcoaled.control;
 
+import byui.cit260.charcoaled.model.Game;
+import byui.cit260.charcoaled.model.Location;
 import byui.cit260.charcoaled.model.Map;
 import byui.cit260.charcoaled.model.Scene;
+import charcoaled.Charcoaled;
+import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 
 /**
@@ -17,7 +21,7 @@ public class MapControl {
 
     static Map createMap() {
         //create the map
-        Map map = new Map(20, 20);
+        Map map = new Map(10, 10);
         
         //create list of different scenes in the game
         Scene[] scenes = createScenes();
@@ -32,14 +36,72 @@ public class MapControl {
         System.out.println("*** called MapControl.moveActorsToStartingLocation(Map map)***");
     }
 
-    private static Scene[] createScenes() {
-        System.out.println("*** called MapControl.createScenes()***");
-        return null;
+    // createScenes() function page 28
+    private static Scene[] createScenes(){
+        BufferedImage image = null;
+        
+        Game game = Charcoaled.getCurrentGame();
+        Scene[] scenes = new Scene[Scene.SceneType.values().length];
+        
+        Scene startingScene = new Scene();
+        startingScene.setDescription("\nYou are a firefighter");
+        
+        startingScene.setMapSymbol(" ST ");
+        startingScene.setBlocked(false);
+        startingScene.setTravelTime(240);
+        
+        //ImageIcon startingSceneImage = MapControl.getImage(startingScene, "/path_to_image/startingPoint.jpg");
+        //startingScene.setIcon(startingSceneImage);
+        scenes[Scene.SceneType.start.ordinal()] = startingScene;
+        
+        //Finish scene
+        Scene finishScene = new Scene();
+        finishScene.setDescription(
+                "\nCongratulations! You have successfully managed to save everyone "
+                + "from the burning building! You are now known as a hero. The people "
+                + "that you saved will always be grateful for your service. ");
+        finishScene.setMapSymbol(" FN ");
+        finishScene.setBlocked(false);
+        finishScene.setTravelTime(Double.POSITIVE_INFINITY);
+        ImageIcon finishSceneImage = MapControl.getImage(finishScene, 
+                "/path_to_image/finish.jpg");
+        //finishScene.setIcon(finishSceneImage);
+        scenes[Scene.SceneType.finish.ordinal()] = finishScene;
+        
+        return scenes;
     }
 
+    // pg 29 assignScenesLocation()
     private static void assignScenesToLocations(Map map, Scene[] scenes) {
-        System.out.println("*** called MapControl.assignScenesToLocations(Map map, Scene[] scenes)***");
-    }
+        Location[][] locations = map.getLocations();
+
+        // start point
+        locations[0][0].setScene(scenes[Scene.SceneType.floorOneRoomOne.ordinal()]);
+        locations[0][1].setScene(scenes[Scene.SceneType.floorOneRoomTwo.ordinal()]);
+        locations[0][2].setScene(scenes[Scene.SceneType.floorOneRoomThree.ordinal()]);
+        locations[0][3].setScene(scenes[Scene.SceneType.floorOneRoomFour.ordinal()]);
+        locations[0][4].setScene(scenes[Scene.SceneType.floorOneRoomFive.ordinal()]);
+        locations[1][0].setScene(scenes[Scene.SceneType.floorTwoRoomOne.ordinal()]);
+        locations[1][1].setScene(scenes[Scene.SceneType.floorTwoRoomTwo.ordinal()]);
+        locations[1][2].setScene(scenes[Scene.SceneType.floorTwoRoomThree.ordinal()]);
+        locations[1][3].setScene(scenes[Scene.SceneType.floorTwoRoomFour.ordinal()]);
+        locations[1][4].setScene(scenes[Scene.SceneType.floorTwoRoomFive.ordinal()]);
+        locations[2][0].setScene(scenes[Scene.SceneType.floorThreeRoomOne.ordinal()]);
+        locations[2][1].setScene(scenes[Scene.SceneType.floorThreeRoomTwo.ordinal()]);
+        locations[2][2].setScene(scenes[Scene.SceneType.floorThreeRoomThree.ordinal()]);
+        locations[2][3].setScene(scenes[Scene.SceneType.floorThreeRoomFour.ordinal()]);
+        locations[2][4].setScene(scenes[Scene.SceneType.floorThreeRoomFive.ordinal()]);
+        locations[3][0].setScene(scenes[Scene.SceneType.floorFourRoomOne.ordinal()]);
+        locations[3][1].setScene(scenes[Scene.SceneType.floorFourRoomTwo.ordinal()]);
+        locations[3][2].setScene(scenes[Scene.SceneType.floorFourRoomThree.ordinal()]);
+        locations[3][3].setScene(scenes[Scene.SceneType.floorFourRoomFour.ordinal()]);
+        locations[3][4].setScene(scenes[Scene.SceneType.floorFourRoomFive.ordinal()]);
+        locations[4][0].setScene(scenes[Scene.SceneType.floorFiveRoomOne.ordinal()]);
+        locations[4][1].setScene(scenes[Scene.SceneType.floorFiveRoomTwo.ordinal()]);
+        locations[4][2].setScene(scenes[Scene.SceneType.floorFiveRoomThree.ordinal()]);
+        locations[4][3].setScene(scenes[Scene.SceneType.floorFiveRoomFour.ordinal()]);
+        locations[4][4].setScene(scenes[Scene.SceneType.floorFiveRoomFive.ordinal()]);   
+}
 
     public static ImageIcon getImage(Scene startingScene, String path_to_imagestartingPointjpg) {
         System.out.println("*** called getImage(Scene startingScene, String path_to_imagestartingPointjpg) ***");

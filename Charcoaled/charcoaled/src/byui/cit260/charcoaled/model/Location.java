@@ -28,6 +28,30 @@ public class Location implements Serializable{
     
     public Location() {
     }
+
+    public void setScene(Scene scene) {
+        this.scene = scene;
+    }
+
+    public void setActors(ArrayList<Actor> actors) {
+        this.actors = actors;
+    }
+
+    public void setObstacle(Obstacle obstacle) {
+        this.obstacle = obstacle;
+    }
+
+    public ArrayList<Actor> getActors() {
+        return actors;
+    }
+
+    public Scene getScene() {
+        return scene;
+    }
+
+    public Obstacle getObstacle() {
+        return obstacle;
+    }
     
     
     public int getRow() {
@@ -114,31 +138,5 @@ public class Location implements Serializable{
         return true;
     }
     
-     private Map[] map;
-    /* does this need getter/setter? l09 pg 10 */
-    /* double check the cardinality here */
-
-    public void setScene(Scene scene) {
-        this.scene = scene;
-    }
-
-    public void setActors(ArrayList<Actor> actors) {
-        this.actors = actors;
-    }
-
-    public void setObstacle(Obstacle obstacle) {
-        this.obstacle = obstacle;
-    }
-
-    public ArrayList<Actor> getActors() {
-        return actors;
-    }
-
-    public Scene getScene() {
-        return scene;
-    }
-
-    public Obstacle getObstacle() {
-        return obstacle;
-    }
+    
 }
