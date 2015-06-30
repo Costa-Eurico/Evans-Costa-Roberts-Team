@@ -8,6 +8,8 @@ package byui.cit260.charcoaled.view;
 import byui.cit260.charcoaled.control.GameControl;
 import charcoaled.Charcoaled;
 import java.util.Scanner;
+import java.io.Serializable;
+import java.util.Arrays;
 
 /**
  *
@@ -44,7 +46,7 @@ public class MainMenuView extends View {
                 creditsView();
                 return;
             case 's':
-                this.highScores();
+                this.initialiseHighScores();
                 break;
             default:
                 System.out.println("\n*** Invalid selection, please try again. ***");
@@ -62,13 +64,50 @@ public class MainMenuView extends View {
         gameMenu.display();
     }
     
-    private void highScores() {
-        int i = 1;
-        do {
-            System.out.println("\n " + i + ". " + displayPlayerHighScore());
-            i++;
-        } while (i <= 10);
+    public static void initialiseHighScores() {
+        int[] highScores = new int[] {11, 22, 33, 44, 55, 66, 77, 88, 99, 100};
+
+        System.out.println("**********HIGH SCORES**********");
+        
+        // sort array from highest value to lowest
+        int sum = 0;
+        int average = 0;
+        int counter = 1;
+        for (int count : highScores) {
+            System.out.println(counter + ": " + count + " points");
+            counter = counter + 1;
+            sum = sum + count;
+            average = sum / highScores.length;
+        }
+        System.out.println("Sum: " + sum + " points");
+        System.out.println("Average score: " + average + " points");
+        System.out.println("High score: ");
+        System.out.println("Low score: ");
+        
+        
+        //for (int i = 0; i < highScores.length; i++)
+        
+            
+        //System.out.println(i+1 + ". " + highScores[i]);
+        
+          
     }
+    
+    public static void highScoresHighLow() {
+        int[] highScores = new int[] {11, 22, 33, 44, 55, 66, 77, 88, 99, 100};
+        
+        System.out.println("**********HIGH SCORES**********");
+        
+        Arrays.sort(highScores);
+        
+        for(int i=highScores.length-1; i>=0; i--){
+
+        System.out.println(highScores[i]);
+        }
+        
+    }
+    
+
     
     
     private void startExistingGame() {
