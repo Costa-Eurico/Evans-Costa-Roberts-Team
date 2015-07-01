@@ -7,6 +7,7 @@ package byui.cit260.charcoaled.control;
 
 import byui.cit260.charcoaled.model.Player;
 import charcoaled.Charcoaled;
+import exception.ProgramControlException;
 
 /**
  *
@@ -14,10 +15,11 @@ import charcoaled.Charcoaled;
  */
 public class ProgramControl {
 
-    public static Player createPlayer(String playersName) {
+    public static Player createPlayer(String playersName)
+                            throws ProgramControlException{
         
         if (playersName == null) {
-            return null;
+            throw new ProgramControlException("Unable to find Players Name");
         }
         
         Player player = new Player();

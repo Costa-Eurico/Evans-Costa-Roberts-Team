@@ -10,6 +10,7 @@ import byui.cit260.charcoaled.model.Location;
 import byui.cit260.charcoaled.model.Map;
 import byui.cit260.charcoaled.model.Scene;
 import charcoaled.Charcoaled;
+import exception.MapControlException;
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 
@@ -19,7 +20,7 @@ import javax.swing.ImageIcon;
  */
 public class MapControl {
 
-    static Map createMap() {
+    static Map createMap() throws MapControlException {
         //create the map
         Map map = new Map(10, 10);
         
@@ -37,7 +38,7 @@ public class MapControl {
     }
 
     // createScenes() function page 28
-    private static Scene[] createScenes(){
+    private static Scene[] createScenes() throws MapControlException{
         BufferedImage image = null;
         
         Game game = Charcoaled.getCurrentGame();
@@ -63,8 +64,6 @@ public class MapControl {
         finishScene.setMapSymbol(" FN ");
         finishScene.setBlocked(false);
         finishScene.setTravelTime(Double.POSITIVE_INFINITY);
-        ImageIcon finishSceneImage = MapControl.getImage(finishScene, 
-                "/path_to_image/finish.jpg");
         //finishScene.setIcon(finishSceneImage);
         scenes[Scene.SceneType.finish.ordinal()] = finishScene;
         
@@ -103,8 +102,5 @@ public class MapControl {
         locations[4][4].setScene(scenes[Scene.SceneType.floorFiveRoomFive.ordinal()]);   
 }
 
-    public static ImageIcon getImage(Scene startingScene, String path_to_imagestartingPointjpg) {
-        System.out.println("*** called getImage(Scene startingScene, String path_to_imagestartingPointjpg) ***");
-        return null;
-    }
+   
 }

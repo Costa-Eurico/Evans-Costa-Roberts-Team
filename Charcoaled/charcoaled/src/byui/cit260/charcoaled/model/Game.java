@@ -5,9 +5,7 @@
  */
 package byui.cit260.charcoaled.model;
 
-import byui.cit260.charcoaled.control.ResourceControl;
 import java.io.Serializable;
-import java.util.Scanner;
 
 /**
  *
