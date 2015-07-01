@@ -6,7 +6,7 @@
 package byui.cit260.charcoaled.view;
 
 import byui.cit260.charcoaled.control.GameControl;
-import byui.cit260.charcoaled.model.Item;
+import byui.cit260.charcoaled.model.InventoryItem;
 import byui.cit260.charcoaled.model.Location;
 import byui.cit260.charcoaled.model.Map;
 import byui.cit260.charcoaled.model.Player;
@@ -65,7 +65,7 @@ class GameMenuView extends View {
                 this.enterThroughDoor(gamePlayer);
                 break;
             case 'v':
-                this.viewItemsInventory();
+                this.viewInventory();
                 break;
             case 'j':
                 this.dropItem();
@@ -85,9 +85,6 @@ class GameMenuView extends View {
     }
     
     private void displayMap() {
-        //MapView MapView = new MapView();
-        //MapView.display();
-        
         Map map = Charcoaled.getCurrentGame().getMap();
         Location[][] locations = map.getLocations();
         
@@ -150,9 +147,9 @@ class GameMenuView extends View {
         room.display();
     }
 
-    private void viewItemsInventory() {
+    private void viewInventory() {
         // get the sorted list of inventory items for the current game
-        Item[] inventory = GameControl.getSortedInventoryList();
+        InventoryItem[] inventory = GameControl.getSortedInventoryList();
         
         System.out.println("\nList of Inventory Items");
         System.out.println("Description" + "\t" +
@@ -160,11 +157,11 @@ class GameMenuView extends View {
                             "In Stock");
         
         // for each inventory item
-        for (Item inventoryItem : inventory) {
+        for (InventoryItem inventoryItem : inventory) {
             //DISPLAY the description, the required amount and amount in stock
             System.out.println(inventoryItem.getDescription() + "\t    " +
-                                inventoryItem.getCoordinates()+ "\t    " +
-                                inventoryItem.name());
+                                inventoryItem.getRequiredAmount()+ "\t    " +
+                                inventoryItem.getQuantityInStock());
         } 
     }
 

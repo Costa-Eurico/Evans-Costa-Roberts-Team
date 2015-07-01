@@ -21,6 +21,7 @@ public class Game implements Serializable {
     private double loseTime;
     private double countSavedVictims;
     private double countLostVictims;
+    private InventoryItem[] inventory;
     
     private Map map;
     private Player player;
@@ -114,6 +115,10 @@ public class Game implements Serializable {
         return true;
     }
 
+    public InventoryItem[] getInventory() {
+        return inventory;
+    }
+
     public Map getMap() {
         return map;
     }
@@ -130,12 +135,7 @@ public class Game implements Serializable {
         this.player = player;
     }
 
-    public void setItem(ResourceControl[] itemList) {
-        System.out.println("*** called Game.setItem(ResourceControl[] itemList) ***");
+    public void setInventory(InventoryItem[] itemList) {
+        this.inventory = itemList;
     }
-
-    public Item[] getInventory() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }

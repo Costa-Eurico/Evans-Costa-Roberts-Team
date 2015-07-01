@@ -22,7 +22,7 @@ public enum Actor implements Serializable{
     private final String description;
     private final Point coordinates;
     
-    private Item item;
+    private InventoryItem item;
     private Location location;  
     
     Actor(String description){
@@ -38,11 +38,11 @@ public enum Actor implements Serializable{
         return coordinates;
     }
     
-    public Item getItem() {
+    public InventoryItem getItem() {
         return item;
     }
 
-    public void setItem(Item item) {
+    public void setItem(InventoryItem item) {
         this.item = item;
     }
     
