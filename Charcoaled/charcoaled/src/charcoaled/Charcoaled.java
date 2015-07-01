@@ -41,11 +41,16 @@ public class Charcoaled {
     }
     
     public static void main(String[] args) {
-        //create StartProgram and start the program
-        StartProgramView startProgram = new StartProgramView();
-        startProgram.startProgram();
-        
-    }
-
-}
+       //create StartProgram and start the program
+       StartProgramView startProgram = new StartProgramView();
+       startProgram.startProgram();
+       try {
+           startProgram.display();
+       } catch (Throwable te) {
+           System.out.println(te.getMessage());
+           te.printStackTrace();
+           startProgram.display();
+       }
+   }
+ }
 

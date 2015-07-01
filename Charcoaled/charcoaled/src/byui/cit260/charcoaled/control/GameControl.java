@@ -11,11 +11,12 @@ import byui.cit260.charcoaled.model.Item;
 import byui.cit260.charcoaled.model.Map;
 import byui.cit260.charcoaled.model.Player;
 import charcoaled.Charcoaled;
+import exception.MapControlException;
 import java.util.List;
 
 public class GameControl {
   
-    public static void createNewGame(Player player) {
+    public static void createNewGame(Player player) throws MapControlException {
         Game game = new Game(); //create new game
         Charcoaled.setCurrentGame(game); //save in Charcoaled
 

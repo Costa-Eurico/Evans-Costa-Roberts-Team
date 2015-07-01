@@ -25,6 +25,7 @@ public class Location implements Serializable{
     private ArrayList<Actor> actors;
     private Obstacle obstacle;
     private Actor[] actor;
+    private ArrayList<Resource> resources = new ArrayList<Resource>();
     
     public Location() {
     }
@@ -94,6 +95,14 @@ public class Location implements Serializable{
         this.type = type;
     }
 
+    public ArrayList<Resource> getResources() {
+        return resources;
+    }
+
+    public void setResources(ArrayList<Resource> resources) {
+        this.resources = resources;
+    }
+    
     @Override
     public String toString() {
         return "Location{" + "row=" + row + ", column=" + column + ", visited=" + visited + ", roomsRemaining=" + roomsRemaining + ", type=" + type + '}';
