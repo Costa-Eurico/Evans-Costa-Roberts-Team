@@ -37,7 +37,7 @@ public class MainMenuView extends View {
                 this.startNewGame();
                 break;
             case 'g': //get and start an existing game
-                this.startExistingGame();
+                this.displaySavedGamesMenu();
                 break;
             case 'h': //display help menu
                 this.displayHelpMenu();
@@ -82,55 +82,17 @@ public class MainMenuView extends View {
         System.out.println("Sum: " + sum + " points");
         System.out.println("Average score: " + average + " points");
         System.out.println("High score: ");
-        System.out.println("Low score: ");
-        
-        
-        //for (int i = 0; i < highScores.length; i++)
-        
-            
-        //System.out.println(i+1 + ". " + highScores[i]);
-        
-          
+        System.out.println("Low score: ");  
     }
     
     public static void highScoresHighLow() {
         int[] highScores = new int[] {11, 22, 33, 44, 55, 66, 77, 88, 99, 100};
         
         System.out.println("**********HIGH SCORES**********");
-        
         Arrays.sort(highScores);
         
         for(int i=highScores.length-1; i>=0; i--){
-
-        System.out.println(highScores[i]);
-        }
-        
-    }
-    
-
-    
-    
-    private void startExistingGame() {
-        String successMsg = "Successfully loaded game ";
-        String errorMsg = "Error";
-        String fileName;
-        Scanner input = new Scanner(System.in);
- 
-        System.out.println("Please enter your saved filename.txt : ");
-        fileName = input.next(); // getting a String value
-        
-        if (fileName.length() <= 1) {
-            System.out.println(errorMsg + " filename must be at least 2 characters");
-            int i = 0;
-            while (i < 10) {
-                System.out.println("You have " + i + " of 10 attempts remaining");
-                i++;
-            }
-        } else {
-            System.out.println(successMsg);
-            
-            GameMenuView gameMenu = new GameMenuView(Charcoaled.getPlayer());
-            gameMenu.display();
+            System.out.println(highScores[i]);
         }
     }
     
@@ -147,7 +109,9 @@ public class MainMenuView extends View {
         CreditsView credits = new CreditsView();
         credits.display();
     }
-    
+
+    private void displaySavedGamesMenu() {
+        SavedGamesMenuView savedGamesMenu = new SavedGamesMenuView();
+        savedGamesMenu.display();
+    }
 }
-
-
