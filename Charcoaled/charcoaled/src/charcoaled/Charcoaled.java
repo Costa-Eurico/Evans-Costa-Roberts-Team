@@ -15,6 +15,7 @@ import byui.cit260.charcoaled.model.Map;
 import byui.cit260.charcoaled.model.Scene;
 import byui.cit260.charcoaled.model.Victim;
 import byui.cit260.charcoaled.view.StartProgramView;
+import exception.ProgramControlException;
 /**
  *
  * @author ih8pcs
@@ -23,6 +24,7 @@ public class Charcoaled {
 
     private static Game currentGame = null;
     private static Player player = null;
+    private static String[] savedGamesList;
     
     public static Game getCurrentGame() {
         return currentGame;
@@ -30,6 +32,14 @@ public class Charcoaled {
     
     public static void setCurrentGame(Game currentGame) {
         Charcoaled.currentGame = currentGame;
+    }
+
+    public static String[] getSavedGamesList() {
+        return savedGamesList;
+    }
+
+    public static void setSavedGamesList(String[] savedGamesList) {
+        Charcoaled.savedGamesList = savedGamesList;
     }
     
     public static Player getPlayer() {
@@ -40,7 +50,7 @@ public class Charcoaled {
         Charcoaled.player = player;
     }
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ProgramControlException {
        //create StartProgram and start the program
        StartProgramView startProgram = new StartProgramView();
        startProgram.startProgram();

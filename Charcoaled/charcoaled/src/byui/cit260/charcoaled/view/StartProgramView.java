@@ -7,6 +7,7 @@ package byui.cit260.charcoaled.view;
 
 import byui.cit260.charcoaled.control.ProgramControl;
 import byui.cit260.charcoaled.model.Player;
+import exception.ProgramControlException;
 import java.util.Scanner;
 
 /**
@@ -19,7 +20,7 @@ public class StartProgramView extends View{
         promptMessage = "Enter the player's name below:";
     }
     
-    public void startProgram () {
+    public void startProgram () throws ProgramControlException {
         
         // display banner screen
         this.displayBanner();

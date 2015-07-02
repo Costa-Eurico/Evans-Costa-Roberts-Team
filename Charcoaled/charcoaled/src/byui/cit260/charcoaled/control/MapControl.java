@@ -56,7 +56,7 @@ public class MapControl {
 
     static Map createMap() throws MapControlException {
         //create the map
-        Map map = new Map(10, 10);
+        Map map = new Map(5, 5);
         
         //create list of different scenes in the game
         Scene[] scenes = createScenes();
@@ -84,9 +84,6 @@ public class MapControl {
         startingScene.setMapSymbol(" ST ");
         startingScene.setBlocked(false);
         startingScene.setTravelTime(240);
-        
-        //ImageIcon startingSceneImage = MapControl.getImage(startingScene, "/path_to_image/startingPoint.jpg");
-        //startingScene.setIcon(startingSceneImage);
         scenes[Scene.SceneType.start.ordinal()] = startingScene;
         
         //Finish scene
@@ -134,7 +131,7 @@ public class MapControl {
         locations[4][2].setScene(scenes[Scene.SceneType.floorFiveRoomThree.ordinal()]);
         locations[4][3].setScene(scenes[Scene.SceneType.floorFiveRoomFour.ordinal()]);
         locations[4][4].setScene(scenes[Scene.SceneType.floorFiveRoomFive.ordinal()]);   
-}
-
-   
+    }
+    
+    
 }
