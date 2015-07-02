@@ -23,6 +23,7 @@ public class Charcoaled {
 
     private static Game currentGame = null;
     private static Player player = null;
+    private static String[] savedGamesList;
     
     public static Game getCurrentGame() {
         return currentGame;
@@ -30,6 +31,14 @@ public class Charcoaled {
     
     public static void setCurrentGame(Game currentGame) {
         Charcoaled.currentGame = currentGame;
+    }
+
+    public static String[] getSavedGamesList() {
+        return savedGamesList;
+    }
+
+    public static void setSavedGamesList(String[] savedGamesList) {
+        Charcoaled.savedGamesList = savedGamesList;
     }
     
     public static Player getPlayer() {
