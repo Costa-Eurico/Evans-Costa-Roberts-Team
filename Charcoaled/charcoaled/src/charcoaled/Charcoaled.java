@@ -59,7 +59,6 @@ public class Charcoaled {
        } catch (Throwable te) {
            System.out.println(te.getMessage());
            te.printStackTrace();
-           startProgram.display();
        }
    }
  }

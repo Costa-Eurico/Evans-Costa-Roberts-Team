@@ -14,6 +14,7 @@ import exception.MapControlException;
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 import byui.cit260.charcoaled.model.Actor;
+import java.awt.Point;
 
 /**
  *
@@ -42,16 +43,15 @@ public class MapControl {
         }
     }
     
-    public static int moveActorsToStartingLocation(Map map) {
+    public static void moveActorsToStartingLocation(Map map) throws MapControlException {
         // for every actor
         Actor[] actors = Actor.values();
         
         for (Actor actor : actors) {
             Point coordinates = actor.getCoordinates();
-            int returnValue = MapControl.moveActorToLocation(actor, coordinates);
+            MapControl.moveActorToLocation(actor, coordinates);
 
         }
-        return 0;
     }   
 
     static Map createMap() throws MapControlException {

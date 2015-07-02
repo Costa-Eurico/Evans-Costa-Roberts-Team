@@ -51,12 +51,12 @@ public class MainMenuView extends View {
             case 'h': //display help menu
                 this.displayHelpMenu();
                 break;
-            case 'x': //exit the program
-                creditsView();
-                return;
             case 's':
                 this.initialiseHighScores();
                 break;
+            case 'x': //exit the program
+                creditsView();
+                return;
             default:
                 System.out.println("\n*** Invalid selection, please try again. ***");
                 break;
