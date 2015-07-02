@@ -15,6 +15,7 @@ import byui.cit260.charcoaled.model.Map;
 import byui.cit260.charcoaled.model.Scene;
 import byui.cit260.charcoaled.model.Victim;
 import byui.cit260.charcoaled.view.StartProgramView;
+import exception.ProgramControlException;
 /**
  *
  * @author ih8pcs
@@ -49,7 +50,7 @@ public class Charcoaled {
         Charcoaled.player = player;
     }
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ProgramControlException {
        //create StartProgram and start the program
        StartProgramView startProgram = new StartProgramView();
        startProgram.startProgram();

@@ -7,9 +7,12 @@ package byui.cit260.charcoaled.view;
 
 import byui.cit260.charcoaled.control.GameControl;
 import charcoaled.Charcoaled;
+import exception.MapControlException;
 import java.util.Scanner;
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -33,8 +36,14 @@ public class MainMenuView extends View {
     public void doAction(char choice) {
         
         switch (Character.toLowerCase(choice)) {
-            case 'n': //create and start new game
+            case 'n': {
+            try {
+                //create and start new game
                 this.startNewGame();
+            } catch (MapControlException ex) {
+                Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
                 break;
             case 'g': //get and start an existing game
                 this.displaySavedGamesMenu();
@@ -56,7 +65,7 @@ public class MainMenuView extends View {
         
     }
 
-    private void startNewGame() {
+    private void startNewGame() throws MapControlException {
         //create new game
         GameControl.createNewGame(Charcoaled.getPlayer());
         
