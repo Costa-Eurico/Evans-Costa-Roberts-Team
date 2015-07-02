@@ -8,6 +8,9 @@ package byui.cit260.charcoaled.control;
     
 public class ActorControl {
     
+    public static void Actor(){
+        
+    }   
     
     public double calcLengthOfRope(double girth, double floor, double height) {
    

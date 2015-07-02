@@ -13,12 +13,46 @@ import charcoaled.Charcoaled;
 import exception.MapControlException;
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
+import byui.cit260.charcoaled.model.Actor;
 
 /**
  *
  * @author ih8pcs
  */
 public class MapControl {
+    
+    // Fix this class
+    public static int moveActors(){
+        return moveActors();
+    }
+        
+    public static void moveActorToLocation(Actor actor, Point coordinates)
+                            throws MapControlException {
+        
+        Map map = Charcoaled.getCurrentGame().getMap();
+        int newRow = coordinates.x-1;
+        int newColumn = coordinates.y-1;
+        
+        if (newRow < 0 || newRow >= map.getNoOfRows() || 
+            newColumn < 0 || newColumn >= map.getNoOfColumns()) {
+            throw new MapControlException("Can not move actor to location "
+                                            + coordinates.x + ", " + coordinates.y
+                                            + " because that location is outside "
+                                            + " the bounds of the map.");
+        }
+    }
+    
+    public static int moveActorsToStartingLocation(Map map) {
+        // for every actor
+        Actor[] actors = Actor.values();
+        
+        for (Actor actor : actors) {
+            Point coordinates = actor.getCoordinates();
+            int returnValue = MapControl.moveActorToLocation(actor, coordinates);
+
+        }
+        return 0;
+    }   
 
     static Map createMap() throws MapControlException {
         //create the map
@@ -33,7 +67,7 @@ public class MapControl {
         return map;
     }
 
-    static void moveActorsToStartingLocation(Map map) {
+    static void moveActorsToStartLocation(Map map) {
         System.out.println("*** called MapControl.moveActorsToStartingLocation(Map map)***");
     }
 

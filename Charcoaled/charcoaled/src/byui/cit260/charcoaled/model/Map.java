@@ -25,6 +25,20 @@ public class Map implements Serializable{
     
     public Map() {
     }
+    
+    class Coordinates {
+        int x;
+        int y;
+        
+        public Coordinates(int x, int y) {
+            this.x = x;
+            this.y = y;            
+        }
+        
+        public int hashCode() {
+            return new Integer(x + "0" + y);
+        }
+    }
 
     public Map(int noOfRows, int noOfColumns) {
         
@@ -51,6 +65,16 @@ public class Map implements Serializable{
                 locations[row][column] = location;
             }
         }
+    }
+    
+    public static int getNoOfRows() {
+        int rows = 5;
+        return rows;
+    }
+    
+    public static int getNoOfColumns() {
+        int columns = 5;
+        return columns;
     }
     
     public void setLocations(Location[][] locations) {
