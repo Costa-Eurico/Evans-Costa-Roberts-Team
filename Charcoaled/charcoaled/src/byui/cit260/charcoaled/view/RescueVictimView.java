@@ -8,6 +8,7 @@ package byui.cit260.charcoaled.view;
 import byui.cit260.charcoaled.control.ActorControl;
 import java.util.Random;
 import java.util.Scanner;
+import exception.ActorControlException;
 
 /**
  *
@@ -35,12 +36,13 @@ public class RescueVictimView extends View{
     
     
     @Override
-    public void display() {
+    public void display(){
         double girth;
         int floor;
         double floorHeight;
         boolean correctAnswer = false;
         int attempts = 3;
+        double ropeLength = 0.0;
         
         do {  
             System.out.println(promptMessage); //display question
@@ -59,16 +61,20 @@ public class RescueVictimView extends View{
         
         //determine rope length
         ActorControl actorCtrl = new ActorControl();
-        double ropeLength;
         
         do {
-            double input = this.getVictimGirth(); //get the user's girth
-            girth = input;
             
             // determine needed rope length. For simplicity, we'll use a fixed floor and floor heigth
             //TODO: add code to determine the current floor and floor height
-            ropeLength = actorCtrl.calcLengthOfRope(girth, 2, 9);
-  
+            try{
+                double input = this.getVictimGirth(); //get the user's girth
+                girth = input;
+                ropeLength = actorCtrl.calcLengthOfRope(girth, 2, 9);
+            }
+            catch(NumberFormatException nfe){
+                System.out.println("*** Invalid Input. A value of type double was expected. ***");
+                continue;
+            }
             if(ropeLength == -1.0){
                 System.out.println("\n*** Invalid girth. Girth can only be a value between 20 and 40 inches ***");
             }
@@ -99,7 +105,7 @@ public class RescueVictimView extends View{
 
                 //if the name is invalid (< 1 characters)
                 if (playerInput.length() < 1) {
-                    System.out.println("*** Invalid input. ***");
+                    System.out.println("*** Invalid input. A numeric value was expected ***");
                     continue; //and repeat again
                 } 
                 else{
@@ -107,7 +113,7 @@ public class RescueVictimView extends View{
                     valid = true;
                 }
             }catch(NumberFormatException e){
-                System.out.println("*** Invalid input. ***");
+                System.out.println("*** Invalid input. A numeric value was expected ***");
                 continue; //and repeat again
             }
         }

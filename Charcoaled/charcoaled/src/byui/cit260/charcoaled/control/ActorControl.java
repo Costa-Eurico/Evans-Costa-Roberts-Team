@@ -5,6 +5,8 @@
  */
 package byui.cit260.charcoaled.control;
 
+import exception.ActorControlException;
+
     
 public class ActorControl {
     
@@ -12,7 +14,7 @@ public class ActorControl {
         
     }   
     
-    public double calcLengthOfRope(double girth, double floor, double height) {
+    public double calcLengthOfRope(double girth, double floor, double height){
    
         if (girth < 20 || girth > 40) { //determine if girth is in range
             return -1;
@@ -32,26 +34,31 @@ public class ActorControl {
     }
     
     // Calculates the force necessary to move a given object, in newtons.
-    public double calcForceNeeded(double weight, double cof){
+    public double calcForceNeeded(double weight, double cof)throws ActorControlException {
         //function variables and constants
         double GRAVITY_CONSTANT = -9.8; // in m/s^2
         double forceOfFriction;
         double forceN;
         
-        if(weight < 1){ // validate lower boundary
-            return -1;
+        try{
+            if(weight < 1){ // validate lower boundary
+                return -1;
+            }
+            if(cof <.1){ //validate coeficient of friction
+                return -1;
+            }
+
+            //Calculate Newtons of force required to mode the object
+            forceOfFriction = -(cof) * weight; // calculate force of friction;
+            forceN = forceOfFriction * GRAVITY_CONSTANT;
+
+            if(forceN > 225) //225 N is the maximum force recommended by OSHA that an individual should push.
+                return -1;
+            else
+                return forceN;
         }
-        if(cof <.1){ //validate coeficient of friction
-            return -1;
+        catch(Exception te){
+            throw new ActorControlException("*** Error Calculating Force Needed to Remove Obstacle ***", te);
         }
-        
-        //Calculate Newtons of force required to mode the object
-        forceOfFriction = -(cof) * weight; // calculate force of friction;
-        forceN = forceOfFriction * GRAVITY_CONSTANT;
-        
-        if(forceN > 225) //225 N is the maximum force recommended by OSHA that an individual should push.
-            return -1;
-        else
-            return forceN;
     }
 }
