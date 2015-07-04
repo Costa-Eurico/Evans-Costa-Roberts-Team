@@ -5,10 +5,8 @@
  */
 package exception;
 
-/**
- *
- * @author ih8pcs
- */
+
+
 public class VictimControlException extends Exception{
 
     public VictimControlException() {

@@ -94,10 +94,6 @@ public class RescueVictimView extends View{
         while (!valid) { //while valid name has not been retrieved
             //prompt for victim's girth
             System.out.println("Enter the victim's girth in inches (example 32.5): ");
-            /**
-             * girth = Double.parseDouble(value) 
-             * 
-             */
             try{
                 //get the girth from the keyboard and trim off blanks
                 playerInput = keyboard.nextLine();

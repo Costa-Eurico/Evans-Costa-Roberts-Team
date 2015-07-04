@@ -15,7 +15,7 @@ public class VictimControl {
       
     public double calcFloorHeight(double floor, double height)
                         throws VictimControlException{
-   
+        //put in throws for VictimControlException
         if (floor < 2 || floor > 5) { //determine if floor is in range
             throw new VictimControlException("The floor is out of range.");
         }
