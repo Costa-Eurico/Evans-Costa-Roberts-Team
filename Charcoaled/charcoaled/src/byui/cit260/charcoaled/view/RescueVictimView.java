@@ -9,6 +9,9 @@ import byui.cit260.charcoaled.control.ActorControl;
 import java.util.Random;
 import java.util.Scanner;
 import exception.ActorControlException;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -45,15 +48,15 @@ public class RescueVictimView extends View{
         double ropeLength = 0.0;
         
         do {  
-            System.out.println(promptMessage); //display question
+            this.console.println(promptMessage); //display question
             
             correctAnswer = askChallengeQuestion();
             if(!correctAnswer){
-                System.out.println("\n*** Incorrect answer, please try again. You have " + attempts + " attempts left ***");
+                this.console.println("\n*** Incorrect answer, please try again. You have " + attempts + " attempts left ***");
                 attempts--;
             }
             else{
-                System.out.println("\n*** Correct! Now lets see if you have enough rope! ***");
+                this.console.println("\n*** Correct! Now lets see if you have enough rope! ***");
                 correctAnswer = true;
             }
          
@@ -74,6 +77,8 @@ public class RescueVictimView extends View{
             catch(NumberFormatException nfe){
                 System.out.println("*** Invalid Input. A value of type double was expected. ***");
                 continue;
+            } catch (IOException ex) {
+                Logger.getLogger(RescueVictimView.class.getName()).log(Level.SEVERE, null, ex);
             }
             if(ropeLength == -1.0){
                 System.out.println("\n*** Invalid girth. Girth can only be a value between 20 and 40 inches ***");
@@ -85,18 +90,17 @@ public class RescueVictimView extends View{
         } while (ropeLength == -1.0);
     }
     
-    private double getVictimGirth() {
+    private double getVictimGirth() throws IOException {
         boolean valid = false; //indicates if name has been retrieved
         String playerInput = null;
         double girth = 0;
-        Scanner keyboard = new Scanner(System.in); //keyboard input stream
         
         while (!valid) { //while valid name has not been retrieved
             //prompt for victim's girth
-            System.out.println("Enter the victim's girth in inches (example 32.5): ");
+            this.console.println("Enter the victim's girth in inches (example 32.5): ");
             try{
                 //get the girth from the keyboard and trim off blanks
-                playerInput = keyboard.nextLine();
+                playerInput = this.keyboard.readLine();
                 playerInput = playerInput.trim();
 
                 //if the name is invalid (< 1 characters)
@@ -126,17 +130,17 @@ public class RescueVictimView extends View{
        
        
        if(availableRope < ropeLength){
-           System.out.println("*** You don't have enough rope. The Victim perished. ***");
+           this.console.println("*** You don't have enough rope. The Victim perished. ***");
        }
        else{
-           System.out.println("*** Congratulations!!! You had enough rope! The Victim was saved. ***");
+           this.console.println("*** Congratulations!!! You had enough rope! The Victim was saved. ***");
            
            //TODO: Code to add additional time to the player and to add to the players' victim's saved score.
        }
     }
 
     private boolean askChallengeQuestion() {
-        System.out.println("*** called generate challenge question ***");
+        this.console.println("*** called generate challenge question ***");
         
         //will generate a random challenge question, which will be an equation 
         //and return true or false based on the answer provided

@@ -8,7 +8,10 @@ package byui.cit260.charcoaled.view;
 import byui.cit260.charcoaled.control.ProgramControl;
 import byui.cit260.charcoaled.model.Player;
 import exception.ProgramControlException;
+import java.io.IOException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -41,49 +44,53 @@ public class StartProgramView extends View{
     }
     
     private void displayLogo(){
-        System.out.println("   (        )                                   (            (     ");
-        System.out.println("   )\\    ( /(      )   (                    )   )\\     (     )\\ )  ");
-        System.out.println(" (((_)   )\\())  ( /(   )(     (     (    ( /(  ((_)   ))\\   (()/(  ");
-        System.out.println(" )\\___  ((_)\\   )(_)) (()\\    )\\    )\\   )(_))  _    /((_)   ((_)) ");
-        System.out.println("((/ __| | |(_) ((_)_   ((_)  ((_)  ((_) ((_)_  | |  (_))     _| |  ");
-        System.out.println(" | (__  | ' \\  / _` | | '_| / _|  / _ \\ / _` | | |  / -_)  / _` |  ");
-        System.out.println("  \\___| |_||_| \\__,_| |_|   \\__|  \\___/ \\__,_| |_|  \\___|  \\__,_|  ");
+        this.console.println("   (        )                                   (            (     ");
+        this.console.println("   )\\    ( /(      )   (                    )   )\\     (     )\\ )  ");
+        this.console.println(" (((_)   )\\())  ( /(   )(     (     (    ( /(  ((_)   ))\\   (()/(  ");
+        this.console.println(" )\\___  ((_)\\   )(_)) (()\\    )\\    )\\   )(_))  _    /((_)   ((_)) ");
+        this.console.println("((/ __| | |(_) ((_)_   ((_)  ((_)  ((_) ((_)_  | |  (_))     _| |  ");
+        this.console.println(" | (__  | ' \\  / _` | | '_| / _|  / _ \\ / _` | | |  / -_)  / _` |  ");
+        this.console.println("  \\___| |_||_| \\__,_| |_|   \\__|  \\___/ \\__,_| |_|  \\___|  \\__,_|  ");
     }
 
     public void displayBanner() {
-        System.out.println("\n******************************************************************");
+        this.console.println("\n******************************************************************");
         this.displayLogo();
-        System.out.println("\nWelcome to Charcoaled\n"
+        this.console.println("\nWelcome to Charcoaled\n"
                 +"\nThere is a large apartment complex on fire and as a firefighter"
                 +"\nyou are required to save the people before the building burns "
                 +"\nto the ground.");
         
-        System.out.println("\nCan you overcome the obstacles and save everyone before time runs"
+        this.console.println("\nCan you overcome the obstacles and save everyone before time runs"
                 +"\nout?"
                 +"\n\nThe people need you, work fast or you might end up"
                 +"\n\n...CHARCOALED.");
         
-        System.out.println("\n******************************************************************");
+        this.console.println("\n******************************************************************");
     }
 
     @Override
     public String getInput() {
         boolean valid = false; //indicates if name has been retrieved
         String playersName = null;
-        Scanner keyboard = new Scanner(System.in); //keyboard input stream
+
         
         while (!valid) { //while valid name has not been retrieved
             
             //prompt for player's name
-            System.out.println("Enter the player's name below:");
+            this.console.println("Enter the player's name below:");
             
-            //get the name from the keyboard and trim off blanks
-            playersName = keyboard.nextLine();
+            try {
+                //get the name from the keyboard and trim off blanks
+                playersName = this.keyboard.readLine();
+            } catch (IOException ex) {
+                Logger.getLogger(StartProgramView.class.getName()).log(Level.SEVERE, null, ex);
+            }
             playersName = playersName.trim();
             
             //if the name is invalid (< 2 characters)
             if (playersName.length() < 2) {
-                System.out.println("Invalid name - the name must be at least two characters");
+                this.console.println("Invalid name - the name must be at least two characters");
                 continue; //and repeat again
             }
             break; // out of the repetition
@@ -93,10 +100,10 @@ public class StartProgramView extends View{
     }
 
     public void displayWelcomeMessage(Player player) {
-        System.out.println("\n\n******************************************************************");
-        System.out.println("\t Welcome " + player.getName() + "!");
-        System.out.println("\t Work quickly, save the people and avoid the fire!");
-        System.out.println("\t You have seven minutes before you're...Charcoaled.");
-        System.out.println("******************************************************************");
+        this.console.println("\n\n******************************************************************");
+        this.console.println("\t Welcome " + player.getName() + "!");
+        this.console.println("\t Work quickly, save the people and avoid the fire!");
+        this.console.println("\t You have seven minutes before you're...Charcoaled.");
+        this.console.println("******************************************************************");
     }
 }

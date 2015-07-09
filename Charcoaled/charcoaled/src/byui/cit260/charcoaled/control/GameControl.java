@@ -12,10 +12,15 @@ import byui.cit260.charcoaled.model.Map;
 import byui.cit260.charcoaled.model.Player;
 import charcoaled.Charcoaled;
 import exception.MapControlException;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.ObjectInputStream;
 import java.util.List;
 
 public class GameControl {
   
+    private static String filePath = null;
+    
     public static void createNewGame(Player player) throws MapControlException {
         Game game = new Game(); //create new game
         Charcoaled.setCurrentGame(game); //save in Charcoaled
@@ -95,6 +100,31 @@ public class GameControl {
         }
         return inventoryList;
     }
+
+    public static void saveGame(Game currentGame, String gameName) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public static void getSavedGame(String filepath)
+                            throws GameControlException {
+    
+        Game game = null;
+        
+        try ( FileInputStream fips = new FileInputStream(filepath)) {
+            ObjectInputStream output = new ObjectInputStream(fips);
+            
+            game = (Game) output.readObject(); //read the game object from the file
+            
+            }
+        catch(FileNotFoundException fnfe) {
+            throw new GameControlException(fnfe.getMessage());
+            }
+        catch(Exception e) {
+            throw new GameControlException(e.getMessage());
+            }
+        //close the output file
+        Charcoaled.setCurrentGame(game); //save in Charcoaled
+        }
     
     private int sumOfList(List<Integer> numbers){
         int sum = 0;

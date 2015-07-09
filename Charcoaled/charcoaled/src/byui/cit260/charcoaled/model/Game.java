@@ -5,6 +5,10 @@
  */
 package byui.cit260.charcoaled.model;
 
+import exception.ProgramControlException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 /**
@@ -135,5 +139,17 @@ public class Game implements Serializable {
 
     public void setInventory(InventoryItem[] itemList) {
         this.inventory = itemList;
+    }
+    public static void saveGame(Game game, String filepath)
+             throws ProgramControlException {
+        
+        try( FileOutputStream fops = new FileOutputStream(filepath)) {
+            ObjectOutputStream output = new ObjectOutputStream(fops);
+            
+            output.writeObject(game);
+        }
+        catch(IOException e){
+            throw new ProgramControlException(e.getMessage());
+        }
     }
 }

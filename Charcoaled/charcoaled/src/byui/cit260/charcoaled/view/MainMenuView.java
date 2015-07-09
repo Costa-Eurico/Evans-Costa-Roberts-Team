@@ -73,7 +73,7 @@ public class MainMenuView extends View {
         gameMenu.display();
     }
     
-    public static void initialiseHighScores() {
+    public void initialiseHighScores() {
         int[] highScores = new int[] {11, 22, 33, 44, 55, 66, 77, 88, 99, 100};
 
         System.out.println("**********HIGH SCORES**********");
@@ -88,16 +88,16 @@ public class MainMenuView extends View {
             sum = sum + count;
             average = sum / highScores.length;
         }
-        System.out.println("Sum: " + sum + " points");
-        System.out.println("Average score: " + average + " points");
-        System.out.println("High score: ");
-        System.out.println("Low score: ");  
+        this.console.println("Sum: " + sum + " points");
+        this.console.println("Average score: " + average + " points");
+        this.console.println("High score: ");
+        this.console.println("Low score: ");  
     }
     
-    public static void highScoresHighLow() {
+    public void highScoresHighLow() {
         int[] highScores = new int[] {11, 22, 33, 44, 55, 66, 77, 88, 99, 100};
         
-        System.out.println("**********HIGH SCORES**********");
+        this.console.println("**********HIGH SCORES**********");
         Arrays.sort(highScores);
         
         for(int i=highScores.length-1; i>=0; i--){

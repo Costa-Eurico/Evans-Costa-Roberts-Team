@@ -8,8 +8,11 @@ package byui.cit260.charcoaled.view;
 import byui.cit260.charcoaled.control.GameControl;
 import byui.cit260.charcoaled.model.InventoryItem;
 import charcoaled.Charcoaled;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -17,6 +20,7 @@ import java.util.Scanner;
  */
 public class SavedGamesMenuView extends View {
 
+    
     public SavedGamesMenuView() {
         promptMessage = "\n"
             + "\n******************************************************************"
@@ -34,8 +38,14 @@ public class SavedGamesMenuView extends View {
             case 'v': //create and start new game
                 this.viewSavedGamesList();
                 break;
-            case 'g': //get and start an existing game from a different location
+            case 'g': {
+            try {
+                //get and start an existing game from a different location
                 this.startExistingGame();
+            } catch (IOException ex) {
+                Logger.getLogger(SavedGamesMenuView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
                 break;
             default:
                 System.out.println("\n*** Invalid selection, please try again. ***");
@@ -43,35 +53,45 @@ public class SavedGamesMenuView extends View {
         }        
     }
   
-    private void startExistingGame() {
+    private void startExistingGame() throws IOException {
         String successMsg = "Successfully loaded game ";
         String errorMsg = "Error";
         String fileName;
-        Scanner input = new Scanner(System.in);
  
-        System.out.println("Please enter your saved filename.txt : ");
-        fileName = input.next(); // getting a String value
-        
+        this.console.println("Please enter your saved filename.txt : ");
+        fileName = this.keyboard.readLine();// getting a String value
+        /*
         if (fileName.length() <= 1) {
             System.out.println(errorMsg + " filename must be at least 2 characters");
             int i = 0;
             while (i < 10) {
-                System.out.println("You have " + i + " of 10 attempts remaining");
+                this.console.println("You have " + i + " of 10 attempts remaining");
                 i++;
             }
         } else {
-            System.out.println(successMsg);
+            this.console.println(successMsg);
             
             GameMenuView gameMenu = new GameMenuView(Charcoaled.getPlayer());
             gameMenu.display();
         }
+                */
+        try {
+            //start a saved game'
+            GameControl.getSavedGame(Charcoaled.filePath);
+        } catch (Exception ex) {
+            ErrorView.display("MainMenuView", errorMsg);
+        }
+        
+        GameMenuView gameMenu = new GameMenuView(Charcoaled.getPlayer());
+        gameMenu.display();
+        
     }
 
     private void viewSavedGamesList() {
         String[] gamesList = Charcoaled.getSavedGamesList();
         
         for(String game: gamesList){
-            System.out.println(game);
+            this.console.println(game);
         }
     }
 }

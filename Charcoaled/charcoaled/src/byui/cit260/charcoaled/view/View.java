@@ -5,7 +5,13 @@
  */
 package byui.cit260.charcoaled.view;
 
+import charcoaled.Charcoaled;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,13 +24,16 @@ public abstract class View implements ViewInterface {
      */
     public String promptMessage;
     
+    public final BufferedReader keyboard = Charcoaled.getInFile();
+    public final PrintWriter console = Charcoaled.getOutFile();
+    
     @Override
     public void display() {
         
         char selection;
         do {
             
-            System.out.println(this.promptMessage); //display main menu
+            this.console.println(this.promptMessage); //display main menu
             
             String input = this.getInput(); //get the user's selection
             selection = input.charAt(0); //get first character of string
@@ -37,15 +46,21 @@ public abstract class View implements ViewInterface {
     public String getInput() {
         boolean valid = false; //indicates if name has been retrieved
         String playerInput = null;
-        Scanner keyboard = new Scanner(System.in); //keyboard input stream
-        
-        while (!valid) { //while valid name has not been retrieved
-            
+
+        while (!valid) { try {
+            //while valid name has not been retrieved
+            /*
             //prompt for player's name
-            System.out.println("Enter choice from Main Menu:");
+            this.console.println("Enter choice from Main Menu:");
             
             //get the name from the keyboard and trim off blanks
             playerInput = keyboard.nextLine();
+            playerInput = playerInput.trim();
+            */
+            playerInput = this.keyboard.readLine();
+            } catch (IOException ex) {
+                Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+            }
             playerInput = playerInput.trim();
             
             //if the name is invalid (< 1 characters)

@@ -47,15 +47,15 @@ public class HelpMenuView extends View {
     }
 
     private void displayGameObjective() {
-        System.out.println("*** displayGameObjective function called ***");
+        this.console.println("*** displayGameObjective function called ***");
     }
 
     private void displayMoveInstructions() {
-        System.out.println("*** displayMoveInstructions function called ***");
+        this.console.println("*** displayMoveInstructions function called ***");
     }
 
     private void displayDiffLevelsOfDifficulty() {
-        System.out.println("*** displayDiffLevelsOfDifficulty function called ***");
+        this.console.println("*** displayDiffLevelsOfDifficulty function called ***");
     }
     
 }

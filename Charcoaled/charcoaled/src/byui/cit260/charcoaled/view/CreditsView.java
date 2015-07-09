@@ -27,24 +27,24 @@ public class CreditsView extends View{
     }
     
     private void displayCreators() {
-        System.out.println("\n******************************************************************");
-        System.out.println("Game developers, creators, and designers");
-        System.out.println("Tiffany Evans");
-        System.out.println("Eurico Costa");
-        System.out.println("Michael Roberts");
+        this.console.println("\n******************************************************************");
+        this.console.println("Game developers, creators, and designers");
+        this.console.println("Tiffany Evans");
+        this.console.println("Eurico Costa");
+        this.console.println("Michael Roberts");
     }
     
     private void displayCredits() {
-        System.out.println("\n******************************************************************");
-        System.out.println("Game Credits");
-        System.out.println("Charcoaled - 2015");
-        System.out.println("http://github.com/Costa-Eurico/Evans-Costa-Roberts-Team \n");
-        System.out.println("Special thanks for the BYU-Idaho CIT 260 course \n"
+        this.console.println("\n******************************************************************");
+        this.console.println("Game Credits");
+        this.console.println("Charcoaled - 2015");
+        this.console.println("http://github.com/Costa-Eurico/Evans-Costa-Roberts-Team \n");
+        this.console.println("Special thanks for the BYU-Idaho CIT 260 course \n"
                 + "developers, instructor, TA, and classmates that helped \n"
                 + "provide feedback, additional insight and help. Charcoaled \n"
                 + "is available on GitHub for anyone to download and use as \n"
                 + "they like. Please provide reference to its original creators. ");
-        System.out.println("\n******************************************************************");
+        this.console.println("\n******************************************************************");
     }
     
     @Override

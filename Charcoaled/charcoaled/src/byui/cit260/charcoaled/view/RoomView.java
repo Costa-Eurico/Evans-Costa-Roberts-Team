@@ -59,18 +59,18 @@ public class RoomView extends View {
     }
 
     private void searchRoom() {
-        System.out.println("*** searchRoom function called ***");
+        this.console.println("*** searchRoom function called ***");
     }
 
     private void pickUpResources() {
-        System.out.println("*** pickUpResources function called ***");
+        this.console.println("*** pickUpResources function called ***");
     }
 
     private void discardResources() {
-        System.out.println("*** discardResources function called ***");
+        this.console.println("*** discardResources function called ***");
     }
 
     private void removeObstacle() {
-        System.out.println("*** removeResources function called ***");
+        this.console.println("*** removeResources function called ***");
     }
 }
