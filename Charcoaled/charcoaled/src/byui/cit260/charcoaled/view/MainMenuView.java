@@ -26,9 +26,10 @@ public class MainMenuView extends View {
             + "\n| Main Menu                                                      |"
             + "\n******************************************************************"
             + "\n N - New Game"
-            + "\n G - Saved Game"
+            + "\n G - Get and start saved game"
+            + "\n S - Save Game"
             + "\n H - Help Menu"
-            + "\n S - High Scores"
+            + "\n I - High Scores"
             + "\n X - Exit Game";
            } 
     
@@ -46,19 +47,22 @@ public class MainMenuView extends View {
         }
                 break;
             case 'g': //get and start an existing game
-                this.displaySavedGamesMenu();
+                this.startSavedGame();
+                break;
+            case 's': //get and start an existing game
+                this.saveGame();
                 break;
             case 'h': //display help menu
                 this.displayHelpMenu();
                 break;
-            case 's':
+            case 'i':
                 this.initialiseHighScores();
                 break;
             case 'x': //exit the program
                 creditsView();
                 return;
             default:
-                this.console.println("\n*** Invalid selection, please try again. ***");
+                ErrorView.display(this.getClass().getName(), "\n*** Invalid selection, please try again. ***");
                 break;
         }
         
@@ -119,8 +123,36 @@ public class MainMenuView extends View {
         credits.display();
     }
 
-    private void displaySavedGamesMenu() {
-        SavedGamesMenuView savedGamesMenu = new SavedGamesMenuView();
-        savedGamesMenu.display();
+    private void startSavedGame() {
+        //prompt for and get the name of the file to save the game in
+        this.console.println("\n\nEnter the file path for the file where the game is located");
+        
+        String filePath = this.getInput();
+        
+        try{
+            //start a saved game
+            GameControl.getSavedGame(filePath);
+        }
+        catch (Exception e){
+            ErrorView.display(this.getClass().getName(), e.getMessage());
+        }
+        
+        //display the game menu
+        GameMenuView gameMenu = new GameMenuView(Charcoaled.getPlayer());
+        gameMenu.display();
+    }
+
+    private void saveGame() {
+        //promtp the user for and get the name of the file to same the game in
+        this.console.println("\n\nEnter the file path for the file where the game is to be saved.");
+        String filePath = this.getInput();
+        
+        try{
+            //save the game to the specified file
+            GameControl.saveGame(Charcoaled.getCurrentGame(), filePath);
+        }
+        catch(Exception ex){
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
+        }
     }
 }

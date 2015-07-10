@@ -5,6 +5,7 @@
  */
 package byui.cit260.charcoaled.control;
 
+import exception.GameControlException;
 import byui.cit260.charcoaled.model.Game;
 import byui.cit260.charcoaled.model.InventoryItem;
 import byui.cit260.charcoaled.model.Item;
@@ -14,7 +15,10 @@ import charcoaled.Charcoaled;
 import exception.MapControlException;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.List;
 
 public class GameControl {
@@ -101,8 +105,14 @@ public class GameControl {
         return inventoryList;
     }
 
-    public static void saveGame(Game currentGame, String gameName) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public static void saveGame(Game currentGame, String filePath) throws GameControlException{
+        try(FileOutputStream fops = new FileOutputStream(filePath)){
+            ObjectOutputStream output = new ObjectOutputStream(fops);
+            
+            output.writeObject(currentGame); //write the game object out to file
+        } catch (IOException e) {
+            throw new GameControlException(e.getMessage());
+        }
     }
     
     public static void getSavedGame(String filepath)

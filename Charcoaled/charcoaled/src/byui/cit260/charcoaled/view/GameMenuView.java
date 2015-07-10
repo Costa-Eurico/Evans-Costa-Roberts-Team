@@ -19,8 +19,12 @@ import java.util.Scanner;
  */
 class GameMenuView extends View {
     
-    private final Player gamePlayer;
+    private Player gamePlayer = null;
 
+     GameMenuView() {
+ 
+    }
+     
     public GameMenuView(Player player) {
         gamePlayer = player;
 
@@ -37,11 +41,9 @@ class GameMenuView extends View {
             + "\n V - View Items in inventory"
             + "\n J - Drop/Remove Item"
             + "\n P - Pause Game"
-            + "\n G - Save Game"
             + "\n X - Return to the main menu ";
         }
-    
-    
+
     @Override
     public void doAction(char choice) {
         
@@ -72,9 +74,6 @@ class GameMenuView extends View {
                 break;
             case 'p':
                 this.pauseGame();
-                break;
-            case 'g':
-                this.saveGame();
                 break;
             case 'x': //return to main menu
                 return;
@@ -173,31 +172,31 @@ class GameMenuView extends View {
         this.console.println("*** pauseGame function called ***");
     }
 
-    private void saveGame() {
-        String errorMessage = "Error - ";
-        String gameName; 
-        
-        this.console.println("Input name to save your game."); 
-        gameName = this.getInput(); // getting a String value
-        
-        try {
-            //save the game to the specified file
-            GameControl.saveGame(Charcoaled.getCurrentGame(), gameName);
-        }catch (Exception ex) {
-            ErrorView.display(this.getClass().getName(), ex.getMessage());
-        }
-        if (gameName.length() <= 1) { 
-            ErrorView.display(this.getClass().getName(), errorMessage + "Game name must be at least 2 characters"); 
-        }
-        else{
-           this.console.println("'" + gameName + "' will be the name of your saved game");  
-           int i = 0;
-           while (i < 1) {
-               GameControl.gameFolder(Charcoaled.getCurrentGame());
-               i++;
-               
-           }
-                  
-        }
-    }
+//    private void saveGame() {
+//        String errorMessage = "Error - ";
+//        String gameName; 
+//        
+//        this.console.println("Input name to save your game."); 
+//        gameName = this.getInput(); // getting a String value
+//        
+//        try {
+//            //save the game to the specified file
+//            GameControl.saveGame(Charcoaled.getCurrentGame(), gameName);
+//        }catch (Exception ex) {
+//            ErrorView.display(this.getClass().getName(), ex.getMessage());
+//        }
+//        if (gameName.length() <= 1) { 
+//            ErrorView.display(this.getClass().getName(), errorMessage + "Game name must be at least 2 characters"); 
+//        }
+//        else{
+//           this.console.println("'" + gameName + "' will be the name of your saved game");  
+//           int i = 0;
+//           while (i < 1) {
+//               GameControl.gameFolder(Charcoaled.getCurrentGame());
+//               i++;
+//               
+//           }
+//                  
+//        }
+//    }
 }

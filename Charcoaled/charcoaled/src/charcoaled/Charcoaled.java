@@ -25,7 +25,7 @@ public class Charcoaled {
     private static PrintWriter outFile = null;
     private static BufferedReader inFile = null;
     private static PrintWriter logFile = null;
-    public static String filePath = null;
+//    public static String filePath = null;
     
     public static Game getCurrentGame() {
         return currentGame;
@@ -120,13 +120,13 @@ public class Charcoaled {
         Charcoaled.logFile = logFile;
     }
 
-    public static String getFilePath() {
-        return filePath;
-    }
+//    public static String getFilePath() {
+//        return filePath;
+//    }
 
-    public static void setFilePath(String filePath) {
-        Charcoaled.filePath = filePath;
-    }
+//    public static void setFilePath(String filePath) {
+//        Charcoaled.filePath = filePath;
+//    }
     
 }
 
