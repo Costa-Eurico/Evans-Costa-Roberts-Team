@@ -52,7 +52,7 @@ public class RescueVictimView extends View{
             
             correctAnswer = askChallengeQuestion();
             if(!correctAnswer){
-                this.console.println("\n*** Incorrect answer, please try again. You have " + attempts + " attempts left ***");
+                ErrorView.display(this.getClass().getName(), "\n*** Incorrect answer, please try again. You have " + attempts + " attempts left ***");
                 attempts--;
             }
             else{
@@ -75,13 +75,13 @@ public class RescueVictimView extends View{
                 ropeLength = actorCtrl.calcLengthOfRope(girth, 2, 9);
             }
             catch(NumberFormatException nfe){
-                System.out.println("*** Invalid Input. A value of type double was expected. ***");
+                ErrorView.display(this.getClass().getName(), "*** Invalid Input. A value of type double was expected. ***");
                 continue;
             } catch (IOException ex) {
                 Logger.getLogger(RescueVictimView.class.getName()).log(Level.SEVERE, null, ex);
             }
             if(ropeLength == -1.0){
-                System.out.println("\n*** Invalid girth. Girth can only be a value between 20 and 40 inches ***");
+                ErrorView.display(this.getClass().getName(), "\n*** Invalid girth. Girth can only be a value between 20 and 40 inches ***");
             }
             else{
                 doActionAttempSaveVictim(ropeLength);
@@ -105,7 +105,7 @@ public class RescueVictimView extends View{
 
                 //if the name is invalid (< 1 characters)
                 if (playerInput.length() < 1) {
-                    System.out.println("*** Invalid input. A numeric value was expected ***");
+                    ErrorView.display(this.getClass().getName(), "*** Invalid input. A numeric value was expected ***");
                     continue; //and repeat again
                 } 
                 else{
@@ -113,7 +113,7 @@ public class RescueVictimView extends View{
                     valid = true;
                 }
             }catch(NumberFormatException e){
-                System.out.println("*** Invalid input. A numeric value was expected ***");
+                ErrorView.display(this.getClass().getName(), "*** Invalid input. A numeric value was expected ***");
                 continue; //and repeat again
             }
         }

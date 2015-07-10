@@ -58,7 +58,7 @@ public class MainMenuView extends View {
                 creditsView();
                 return;
             default:
-                System.out.println("\n*** Invalid selection, please try again. ***");
+                this.console.println("\n*** Invalid selection, please try again. ***");
                 break;
         }
         
@@ -76,14 +76,14 @@ public class MainMenuView extends View {
     public void initialiseHighScores() {
         int[] highScores = new int[] {11, 22, 33, 44, 55, 66, 77, 88, 99, 100};
 
-        System.out.println("**********HIGH SCORES**********");
+        this.console.println("**********HIGH SCORES**********");
         
         // sort array from highest value to lowest
         int sum = 0;
         int average = 0;
         int counter = 1;
         for (int count : highScores) {
-            System.out.println(counter + ": " + count + " points");
+            this.console.println(counter + ": " + count + " points");
             counter = counter + 1;
             sum = sum + count;
             average = sum / highScores.length;
@@ -101,7 +101,7 @@ public class MainMenuView extends View {
         Arrays.sort(highScores);
         
         for(int i=highScores.length-1; i>=0; i--){
-            System.out.println(highScores[i]);
+            this.console.println(highScores[i]);
         }
     }
     

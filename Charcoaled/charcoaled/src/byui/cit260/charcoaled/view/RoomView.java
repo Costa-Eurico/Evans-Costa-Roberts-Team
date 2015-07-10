@@ -48,7 +48,7 @@ public class RoomView extends View {
             case 'x': //return to main menu
                 return;
             default:
-                System.out.println("\n*** Invalid selection, please try again. ***");
+                ErrorView.display(this.getClass().getName(), "\n*** Invalid selection, please try again. ***");
                 break;
         }
     }

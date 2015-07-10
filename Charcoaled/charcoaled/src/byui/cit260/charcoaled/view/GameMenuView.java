@@ -79,7 +79,7 @@ class GameMenuView extends View {
             case 'x': //return to main menu
                 return;
             default:
-                System.out.println("\n*** Invalid selection, please try again. ***");
+                this.console.println("\n*** Invalid selection, please try again. ***");
                 break;
         }
     }
@@ -99,7 +99,7 @@ class GameMenuView extends View {
         this.console.println("\n---------------------------------------------------------------");
         this.console.print("  |");
         for(int i=1; i <= locations.length; i++){
-            System.out.print("  " + i + "  |");
+            this.console.print("  " + i + "  |");
         }
         
         this.console.println("");
@@ -174,21 +174,20 @@ class GameMenuView extends View {
     }
 
     private void saveGame() {
-        //System.out.println("*** saveGame function called ***"); 
         String errorMessage = "Error - ";
         String gameName; 
         
-        System.out.println("Input name to save your game."); 
+        this.console.println("Input name to save your game."); 
         gameName = this.getInput(); // getting a String value
         
         try {
             //save the game to the specified file
             GameControl.saveGame(Charcoaled.getCurrentGame(), gameName);
         }catch (Exception ex) {
-            ErrorView.display("MainMenuView", ex.getMessage());
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
         }
         if (gameName.length() <= 1) { 
-            System.out.println(errorMessage + "Game name must be at least 2 characters"); 
+            ErrorView.display(this.getClass().getName(), errorMessage + "Game name must be at least 2 characters"); 
         }
         else{
            this.console.println("'" + gameName + "' will be the name of your saved game");  

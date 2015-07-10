@@ -9,7 +9,6 @@ import charcoaled.Charcoaled;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -23,7 +22,6 @@ public abstract class View implements ViewInterface {
      *
      */
     public String promptMessage;
-    
     public final BufferedReader keyboard = Charcoaled.getInFile();
     public final PrintWriter console = Charcoaled.getOutFile();
     
@@ -49,14 +47,6 @@ public abstract class View implements ViewInterface {
 
         while (!valid) { try {
             //while valid name has not been retrieved
-            /*
-            //prompt for player's name
-            this.console.println("Enter choice from Main Menu:");
-            
-            //get the name from the keyboard and trim off blanks
-            playerInput = keyboard.nextLine();
-            playerInput = playerInput.trim();
-            */
             playerInput = this.keyboard.readLine();
             } catch (IOException ex) {
                 Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
@@ -65,7 +55,7 @@ public abstract class View implements ViewInterface {
             
             //if the name is invalid (< 1 characters)
             if (playerInput.length() < 1) {
-                System.out.println("Invalid request - please enter one of Main Menu Options");
+                ErrorView.display(this.getClass().getName(), "Invalid request - please enter one of Main Menu Options");
                 continue; //and repeat again
             }
             break; // out of the repetition
@@ -83,7 +73,7 @@ public abstract class View implements ViewInterface {
         
         switch (Character.toLowerCase(choice)) {
             default:
-                System.out.println("\n*** Invalid selection, please try again. ***");
+                ErrorView.display(this.getClass().getName(),"\n*** Invalid selection, please try again. ***");
                 break;
         }
         

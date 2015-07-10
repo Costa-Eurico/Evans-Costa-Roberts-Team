@@ -41,7 +41,7 @@ public class MapView extends View {
             case 'x': //exit the program
                 return;
                 default:
-                System.out.println("\n*** Invalid selection, please try again. ***");
+                this.console.println("\n*** Invalid selection, please try again. ***");
                 break;
             }
         }

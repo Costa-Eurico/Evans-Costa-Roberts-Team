@@ -5,15 +5,8 @@
  */
 package charcoaled;
 
-import byui.cit260.charcoaled.model.Actor;
 import byui.cit260.charcoaled.model.Game;
-import byui.cit260.charcoaled.model.InventoryItem;
-import byui.cit260.charcoaled.model.Location;
-import byui.cit260.charcoaled.model.Obstacle;
 import byui.cit260.charcoaled.model.Player;
-import byui.cit260.charcoaled.model.Map;
-import byui.cit260.charcoaled.model.Scene;
-import byui.cit260.charcoaled.model.Victim;
 import byui.cit260.charcoaled.view.StartProgramView;
 import exception.ProgramControlException;
 import java.io.BufferedReader;
@@ -29,10 +22,8 @@ public class Charcoaled {
     private static Game currentGame = null;
     private static Player player = null;
     private static String[] savedGamesList;
-    
     private static PrintWriter outFile = null;
     private static BufferedReader inFile = null;
-    
     private static PrintWriter logFile = null;
     public static String filePath = null;
     
@@ -62,22 +53,12 @@ public class Charcoaled {
     
     public static void main(String[] args) throws ProgramControlException {
        //create StartProgram and start the program
-       /**
-        StartProgramView startProgram = new StartProgramView();
-       startProgram.startProgram();
-       try {
-           startProgram.display();
-       } catch (Throwable te) {
-           this.console.println(te.getMessage());
-           te.printStackTrace();
-       }
-       */
-       
        try {
            
+           System.out.println(Charcoaled.class.getSimpleName());
+           
            //open character stream files for end user input and output
-           Charcoaled.inFile = 
-                   new BufferedReader(new InputStreamReader(System.in));
+           Charcoaled.inFile = new BufferedReader(new InputStreamReader(System.in));
            
            Charcoaled.outFile = new PrintWriter(System.out, true);
            
@@ -99,7 +80,7 @@ public class Charcoaled {
        
        finally{
            try{
-               if (Charcoaled.inFile != null)
+               if (Charcoaled.inFile != null) //used to avoid throwing a NullPointerException in case the file was not open correctly.
                    Charcoaled.inFile.close();
                
                if (Charcoaled.outFile != null)
