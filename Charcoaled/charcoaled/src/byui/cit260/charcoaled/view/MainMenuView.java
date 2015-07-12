@@ -6,8 +6,14 @@
 package byui.cit260.charcoaled.view;
 
 import byui.cit260.charcoaled.control.GameControl;
+import byui.cit260.charcoaled.model.Actor;
 import charcoaled.Charcoaled;
 import exception.MapControlException;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 import java.io.Serializable;
 import java.util.Arrays;
@@ -28,6 +34,7 @@ public class MainMenuView extends View {
             + "\n N - New Game"
             + "\n G - Get and start saved game"
             + "\n S - Save Game"
+            + "\n P - Print Map"
             + "\n H - Help Menu"
             + "\n I - High Scores"
             + "\n X - Exit Game";
@@ -51,6 +58,15 @@ public class MainMenuView extends View {
                 break;
             case 's': //get and start an existing game
                 this.saveGame();
+                break;
+            case 'p': 
+        {
+            try {
+                this.printMap();
+            } catch (IOException ex) {
+                Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
                 break;
             case 'h': //display help menu
                 this.displayHelpMenu();
@@ -155,4 +171,73 @@ public class MainMenuView extends View {
             ErrorView.display(this.getClass().getName(), ex.getMessage());
         }
     }
+
+    public void printMap() throws IOException {
+        
+        
+        //Specify the file location of the file
+        String fileLocation = "map.text";
+        
+        try (FileWriter outFile = new FileWriter(fileLocation)) {
+
+            
+            //write out the map to the file
+            outFile.write("\n------Charcoaled Apartment Building Map-------");
+            outFile.write("\n----------------------------------------------");
+            outFile.write("\n|  F1R1  |  F1R2  |  F1R3  |  F1R4  |  F1R5  |");
+            outFile.write("\n----------------------------------------------");
+            outFile.write("\n|  F2R1  |  F2R2  |  F2R3  |  F2R4  |  F2R5  |");
+            outFile.write("\n----------------------------------------------");
+            outFile.write("\n|  F3R1  |  F3R2  |  F3R3  |  F3R4  |  F3R5  |");
+            outFile.write("\n----------------------------------------------");
+            outFile.write("\n|  F4R1  |  F4R2  |  F4R3  |  F4R4  |  F4R5  |");
+            outFile.write("\n----------------------------------------------");
+            outFile.write("\n|  F5R1  |  F5R2  |  F5R3  |  F5R4  |  F5R5  |");
+            outFile.write("\n----------------------------------------------");
+
+   
+            outFile.flush(); //flush out any data left in the file stream
+            
+        } catch (IOException ex) {
+            System.out.println("Error saving Map to file");
+        } 
+        String outputLocation = null;
+      //String outputLocation = new outputLocation;
+        //create BufferedReader object for input file
+       try (BufferedReader in = 
+               new BufferedReader(new FileReader(fileLocation));
+            BufferedWriter out =
+               new BufferedWriter(new FileWriter(outputLocation))
+           ) {
+           
+           String text;
+           while((text = in.readLine()) != null) {//while not the end of file
+               out.write(text);
+           }
+           
+        }  catch (IOException ex) {
+            System.out.println("I/O Error: " + ex.getMessage());
+        }
+        
+    }
 }
+   /*public void copyPrintMap(String fileLocation, String outputLocation) {
+       
+       //create BufferedReader object for input file
+       try (BufferedReader in = 
+               new BufferedReader(new FileReader(fileLocation));
+            BufferedWriter out =
+               new BufferedWriter(new FileWriter(outputLocation))
+           ) {
+           
+           String text;
+           while((text = in.readLine()) != null) {//while not the end of file
+               out.write(text);
+           }
+           
+        }  catch (IOException ex) {
+            System.out.println("I/O Error: " + ex.getMessage());
+        }
+        
+    }
+   */

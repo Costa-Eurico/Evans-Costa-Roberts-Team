@@ -17,10 +17,11 @@ public enum Actor implements Serializable{
     
     FirefighterOne("Male Firefighter"),
     FirefighterTwo("Female Firefighter");
+   
     
     //class instance variables
     private final String description;
-    private final Point coordinates;
+    public final Point coordinates;
     
     private InventoryItem item;
     private Location location;  
