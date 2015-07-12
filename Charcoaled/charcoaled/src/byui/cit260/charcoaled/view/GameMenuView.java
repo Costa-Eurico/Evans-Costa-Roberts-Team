@@ -67,7 +67,7 @@ class GameMenuView extends View {
                 this.enterThroughDoor(gamePlayer);
                 break;
             case 'v':
-                this.viewInventory();
+                this.showInventory(filepath);
                 break;
             case 'j':
                 this.dropItem();

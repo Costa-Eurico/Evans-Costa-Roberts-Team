@@ -115,6 +115,24 @@ public class GameControl {
         }
     }
     
+    public static void showInventory(String filepath)
+                        throws GameControlException {
+        InventoryItem inventoryItem = null;
+        
+        try( FileInputStream fips = new FileInputStream(filepath)) {
+           ObjectInputStream output = new ObjectInputStream(fips);
+           
+           inventoryItem = (InventoryItem) output.readObject();
+        }
+        catch(FileNotFoundException fnfe) {
+            throw new GameControlException(fnfe.getMessage());
+        }
+        catch(Exception e) {
+            throw new GameControlException(e.getMessage());
+        }
+        
+    }
+    
     public static void getSavedGame(String filepath)
                             throws GameControlException {
     
