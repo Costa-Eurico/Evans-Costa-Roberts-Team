@@ -6,11 +6,19 @@
 package byui.cit260.charcoaled.view;
 
 import byui.cit260.charcoaled.control.GameControl;
+import byui.cit260.charcoaled.model.Actor;
+import byui.cit260.charcoaled.model.Game;
 import byui.cit260.charcoaled.model.InventoryItem;
 import byui.cit260.charcoaled.model.Location;
 import byui.cit260.charcoaled.model.Map;
 import byui.cit260.charcoaled.model.Player;
 import charcoaled.Charcoaled;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -41,6 +49,7 @@ class GameMenuView extends View {
             + "\n V - View Items in inventory"
             + "\n J - Drop/Remove Item"
             + "\n P - Pause Game"
+            + "\n R - Print Actors Report"
             + "\n X - Return to the main menu ";
         }
 
@@ -66,14 +75,17 @@ class GameMenuView extends View {
             case 'e':
                 this.enterThroughDoor(gamePlayer);
                 break;
-            case 'v':
-                this.showInventory(filepath);
-                break;
+//            case 'v':
+//                this.showInventory(filepath);
+//                break;
             case 'j':
                 this.dropItem();
                 break;
             case 'p':
                 this.pauseGame();
+                break;
+            case 'r':
+                this.printActorsReport();
                 break;
             case 'x': //return to main menu
                 return;
@@ -199,4 +211,93 @@ class GameMenuView extends View {
 //                  
 //        }
 //    }
+
+    private void printActorsReport() {
+        String fileName = "list-of-actors.txt";
+        
+        //promtp the user for and get the name of the file to same the game in
+        this.console.println("\n\nEnter the file location for the Actors Report. \nPress enter if you prefer to use the default location:");
+        String filePath = this.getInput();
+        
+        saveAndDisplayActorsReportFile(filePath + fileName);
+    }
+    
+    private void saveAndDisplayActorsReportFile(String filePath){
+        File file = null;
+        FileWriter outFile = null; //initialize FileWriter stream
+        FileReader inFile = null; //initialize FileReader stream
+        BufferedReader buff = null;
+        
+        try{
+            //create report in file
+            file = new File(filePath);
+            
+            outFile = new FileWriter(file);
+            
+            outFile.write("             LIST OF ACTORS\n");
+            outFile.write("---------------------------------------\n");
+            outFile.write("NAME                           LOCATION\n");
+            outFile.write("---------------------------------------\n");
+            
+            //write each Actor and location to the file
+            Map map = Charcoaled.getCurrentGame().getMap();
+            Location[][] locations = map.getLocations();
+            Location location = null;
+            ArrayList<Actor> actors = null;
+            
+       
+            for(int row = 0; row < locations[0].length; row++){
+                for(int col = 0; col < locations.length; col++){
+                    location = locations[row][col];
+                    actors = location.getActors();
+                    
+                    if(actors != null){
+                        for(Actor actor: actors){
+                            outFile.write(actor.name() + "                  " + row + ", " + col + "\n");
+                        }
+                    }
+                    else{
+                        outFile.write("No Actor found at location       " + row + ", " + col + "\n");
+                    }
+                    
+                }
+            }
+            this.console.println("---------------------------------------");
+            outFile.flush();
+            
+            //Read file and print to screen
+            inFile = new FileReader(file);
+            buff = new BufferedReader(inFile);
+            String data;
+            
+            while((data = buff.readLine()) != null){
+                this.console.println(data);
+            }
+        }
+        catch(IOException e){
+            ErrorView.display(this.getClass().getName(), "Error saving or printing Actors list: " + e.getMessage());
+        }
+        catch(Exception ex){
+            ErrorView.display(this.getClass().getName(), "Error saving or printing Actors list: " + ex.getMessage());
+        }
+        finally{
+            if(outFile != null){
+                try{
+                    outFile.close(); //close the file
+                }
+                catch(IOException e2){
+                    ErrorView.display(this.getClass().getName(), "Error closing Actors Report file: " + e2.getMessage());
+                }
+            }
+            
+            if(inFile != null){
+                try{
+                    inFile.close(); //close the file
+                }
+                catch(IOException e2){
+                    ErrorView.display(this.getClass().getName(), "Error closing Actors Report file: " + e2.getMessage());
+                }
+            }
+        }
+    }
 }
