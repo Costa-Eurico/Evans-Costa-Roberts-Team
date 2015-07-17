@@ -34,7 +34,7 @@ public class Charcoaled {
     public static void setCurrentGame(Game currentGame) {
         Charcoaled.currentGame = currentGame;
     }
-
+  
     public static String[] getSavedGamesList() {
         return savedGamesList;
     }
