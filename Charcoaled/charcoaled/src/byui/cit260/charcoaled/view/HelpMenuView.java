@@ -35,9 +35,6 @@ public class HelpMenuView extends View {
             case 'm': //how to move around the game
                 this.displayMoveInstructions();
                 break;
-            case 'd': //differences between levels of difficulty
-                this.displayDiffLevelsOfDifficulty();
-                break;
             case 'x': //return to main menu
                 return;
             default:
@@ -54,8 +51,4 @@ public class HelpMenuView extends View {
         this.console.println("*** displayMoveInstructions function called ***");
     }
 
-    private void displayDiffLevelsOfDifficulty() {
-        this.console.println("*** displayDiffLevelsOfDifficulty function called ***");
-    }
-    
 }

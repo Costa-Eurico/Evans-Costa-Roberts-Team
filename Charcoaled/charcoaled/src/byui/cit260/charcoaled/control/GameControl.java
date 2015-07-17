@@ -42,9 +42,9 @@ public class GameControl {
         MapControl.moveActorsToStartingLocation(map);
     }
 
-    public static void gameFolder(Game currentGame) {
-        System.out.println("\n*** gameFolder stub function called ***"); //does not inherit from view, so, won't use this.console...
-    }
+  //  public static void gameFolder(Game currentGame) {
+      //  System.out.println("\n*** gameFolder stub function called ***"); //does not inherit from view, so, won't use this.console...
+   // }
 
     private static InventoryItem[] createItemList() {
         //created array(list) of inventory itemsc

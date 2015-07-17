@@ -20,9 +20,9 @@ public class Resource implements Serializable {
         this.amount = amount;
     }
 
-    public Resource() {
-        System.out.println("\n*** Resource function called ***");
-    }
+  //  public Resource() {
+     //   System.out.println("\n*** Resource function called ***");
+  //  }
     
     public Item getItem() {
         return item;
@@ -40,17 +40,17 @@ public class Resource implements Serializable {
         this.amount = amount;
     }
 
-    public void setDescription(String axe) {
-        System.out.println("\n*** Stub Function called. ***");
-    }
+    //public void setDescription(String axe) {
+   //     System.out.println("\n*** Stub Function called. ***");
+   // }
 
-    public void setQuantityInStock(int i) {
-        System.out.println("\n*** Stub Function called. ***");
-    }
+   // public void setQuantityInStock(int i) {
+     //   System.out.println("\n*** Stub Function called. ***");
+   // }
 
-    public void setRequiredAmount(int i) {
-        System.out.println("\n*** Stub Function called. ***");
-    }
+   // public void setRequiredAmount(int i) {
+     //   System.out.println("\n*** Stub Function called. ***");
+    //}
     
     
 }
