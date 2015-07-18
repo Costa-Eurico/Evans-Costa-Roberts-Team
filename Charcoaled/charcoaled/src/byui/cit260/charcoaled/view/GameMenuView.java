@@ -81,9 +81,6 @@ class GameMenuView extends View {
             case 'j':
                 this.dropItem();
                 break;
-            case 'p':
-                this.pauseGame();
-                break;
             case 'r':
                 this.printActorsReport();
                 break;

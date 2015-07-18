@@ -16,8 +16,14 @@ import java.util.Objects;
 public enum Actor implements Serializable{
     
     FirefighterOne("Male Firefighter"),
-    FirefighterTwo("Female Firefighter");
-   
+    FirefighterTwo("Female Firefighter"),
+    VictimOne("Woman"),
+    VictimTwo("Man"),
+    VictimThree("Girl"),
+    VictimFour("Boy"),
+    VictimFive("Grandma"),
+    VictimSix("Grandpa");
+
     
     //class instance variables
     private final String description;
