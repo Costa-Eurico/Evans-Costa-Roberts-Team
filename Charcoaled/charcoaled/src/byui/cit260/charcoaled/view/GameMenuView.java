@@ -6,6 +6,7 @@
 package byui.cit260.charcoaled.view;
 
 import byui.cit260.charcoaled.control.GameControl;
+import byui.cit260.charcoaled.control.MapControl;
 import byui.cit260.charcoaled.model.Actor;
 import byui.cit260.charcoaled.model.Game;
 import byui.cit260.charcoaled.model.InventoryItem;
@@ -13,6 +14,8 @@ import byui.cit260.charcoaled.model.Location;
 import byui.cit260.charcoaled.model.Map;
 import byui.cit260.charcoaled.model.Player;
 import charcoaled.Charcoaled;
+import exception.MapControlException;
+import java.awt.Point;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -20,6 +23,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -41,10 +46,10 @@ class GameMenuView extends View {
             + "\n| Game Menu                                                      |"
             + "\n******************************************************************"
             + "\n M - Display Map"
-            + "\n W - Move up the stairs"
+            + "\n W - Move upstairs"
             + "\n A - Move to the door to the left"
-            + "\n S - Move down the stairs"
             + "\n D - Move to the door to the right"
+            + "\n S - Move downstairs"
             + "\n E - Enter through the door into the apartment"
             + "\n V - View Items in inventory"
             + "\n J - Drop/Remove Item"
@@ -107,48 +112,83 @@ class GameMenuView extends View {
         this.console.println(strTitle); //display title
         //display row of column numbers
         
-        this.console.println("\n---------------------------------------------------------------");
+        this.console.println("\n----------------------------------");
         this.console.print("  |");
         for(int i=1; i <= locations.length; i++){
             this.console.print("  " + i + "  |");
         }
         
-        this.console.println("");
+        //this.console.println("");
         Location location;
        
         for(int row = 0; row < locations[0].length; row++){
-            this.console.println("\n---------------------------------------------------------------");
+            this.console.println("\n----------------------------------");
             this.console.print((row + 1) + " | ");
             
             for(int col = 0; col < locations.length; col++){
                 location = locations[row][col];
-
-                if(location.getVisited()){
+                Point point = new Point();
+                point.x = col;
+                point.y = row;
+                
+                if(Charcoaled.getPlayer().getActor().getLocation().getCoordinates() == location.getCoordinates()){
+                    this.console.print(" #  ");
+                }
+                else if(location.getVisited()){
                     this.console.print(" V  ");
                 }
                 else{
                     this.console.print(" ??  ");
                 }
-                this.console.print("|");
+                this.console.print("|");  
             }
         }
-        this.console.println("\n---------------------------------------------------------------");
+        this.console.println("\n----------------------------------");
     }
    
     private void moveUpStairs() {
-        this.console.println("*** moveUpStairs function called ***");
+        Point point = Charcoaled.getPlayer().getActor().getCoordinates();
+        point.x += 1;
+        
+        try { 
+            MapControl.moveActorToLocation(Charcoaled.getPlayer().getActor(), point);
+        } catch (MapControlException ex) {
+            ErrorView.display(this.getClass().getName(), "Sorry, but you cannot move to that location because you've reached the top floor. You can only move left, right, or down.");
+        }
     }
 
     private void moveToDoorToTheLeft() {
-        this.console.println("*** moveToDoorToTheLeft function called ***");
+        Point point = Charcoaled.getPlayer().getActor().getCoordinates();
+        point.y -= 1;
+        
+        try{
+        MapControl.moveActorToLocation(Charcoaled.getPlayer().getActor(), point); 
+        } catch (MapControlException ex) {
+            ErrorView.display(this.getClass().getName(), "Sorry, but you cannot move to that location because you've reached the start of the corridor. You can only move right, up, or down.");
+        }
+        
     }
 
     private void moveDownStairs() {
-        this.console.println("*** moveDownStairs function called ***");
+        Point point = Charcoaled.getPlayer().getActor().getCoordinates();
+        point.x -= 1;
+        
+        try { 
+            MapControl.moveActorToLocation(Charcoaled.getPlayer().getActor(), point);
+        } catch (MapControlException ex) {
+            ErrorView.display(this.getClass().getName(), "Sorry, but you cannot move to that location because you've reached the bottom floor. You can only move left, right, or up.");
+        }
     }
 
     private void moveToDoorToTheRight() {
-        this.console.println("*** moveToDoorToTheRight function called ***");
+        Point point = Charcoaled.getPlayer().getActor().getCoordinates();
+        point.y += 1;
+        
+        try { 
+            MapControl.moveActorToLocation(Charcoaled.getPlayer().getActor(), point);
+        } catch (MapControlException ex) {
+            ErrorView.display(this.getClass().getName(), "Sorry, but you cannot move to that location because you've reached the end of the corridor. You can only move left, up, or down.");
+        }
     }
 
     private void enterThroughDoor(Player gamePlayer) {

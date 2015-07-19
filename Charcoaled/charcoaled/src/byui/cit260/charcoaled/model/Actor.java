@@ -15,14 +15,13 @@ import java.util.Objects;
  */
 public enum Actor implements Serializable{
     
-    FirefighterOne("Male Firefighter"),
-    FirefighterTwo("Female Firefighter");
+    FirefighterOne("Firefighter");
+    //FirefighterTwo("Female Firefighter");
    
     
     //class instance variables
     private final String description;
     public final Point coordinates;
-    
     private InventoryItem item;
     private Location location;  
     

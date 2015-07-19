@@ -31,8 +31,8 @@ public class MapControl {
                             throws MapControlException {
         
         Map map = Charcoaled.getCurrentGame().getMap();
-        int newRow = coordinates.x-1;
-        int newColumn = coordinates.y-1;
+        int newRow = coordinates.x;
+        int newColumn = coordinates.y;
         
         if (newRow < 0 || newRow >= map.getNoOfRows() || 
             newColumn < 0 || newColumn >= map.getNoOfColumns()) {
@@ -41,17 +41,19 @@ public class MapControl {
                                             + " because that location is outside "
                                             + " the bounds of the map.");
         }
+        else{
+            Location currentLoc = map.getLocations()[newRow][newColumn];
+            Charcoaled.getPlayer().getActor().setLocation(currentLoc);
+        }
     }
     
-    public static void moveActorsToStartingLocation(Map map) throws MapControlException {
+    public static void moveActorsToStartLocation(Map map) throws MapControlException {
         // for every actor
-        Actor[] actors = Actor.values();
+        Actor actor = Actor.FirefighterOne;
+        Charcoaled.getPlayer().setActor(actor);
         
-        for (Actor actor : actors) {
-            Point coordinates = actor.getCoordinates();
-            MapControl.moveActorToLocation(actor, coordinates);
-
-        }
+        Point coordinates = new Point(0,0);
+        MapControl.moveActorToLocation(actor, coordinates);
     }   
 
     static Map createMap() throws MapControlException {
@@ -65,10 +67,6 @@ public class MapControl {
         assignScenesToLocations(map, scenes);
         
         return map;
-    }
-
-    static void moveActorsToStartLocation(Map map) {
-        System.out.println("*** called MapControl.moveActorsToStartingLocation(Map map)***");
     }
 
     // createScenes() function page 28
@@ -107,30 +105,55 @@ public class MapControl {
 
         // start point
         locations[0][0].setScene(scenes[Scene.SceneType.floorOneRoomOne.ordinal()]);
+        locations[0][0].setCoordinates(new Point(0,0));
         locations[0][1].setScene(scenes[Scene.SceneType.floorOneRoomTwo.ordinal()]);
+        locations[0][1].setCoordinates(new Point(0,1));
         locations[0][2].setScene(scenes[Scene.SceneType.floorOneRoomThree.ordinal()]);
+        locations[0][2].setCoordinates(new Point(0,2));
         locations[0][3].setScene(scenes[Scene.SceneType.floorOneRoomFour.ordinal()]);
+        locations[0][3].setCoordinates(new Point(0,3));
         locations[0][4].setScene(scenes[Scene.SceneType.floorOneRoomFive.ordinal()]);
+        locations[0][4].setCoordinates(new Point(0,4));
         locations[1][0].setScene(scenes[Scene.SceneType.floorTwoRoomOne.ordinal()]);
+        locations[1][0].setCoordinates(new Point(1,0));
         locations[1][1].setScene(scenes[Scene.SceneType.floorTwoRoomTwo.ordinal()]);
+        locations[1][1].setCoordinates(new Point(1,1));
         locations[1][2].setScene(scenes[Scene.SceneType.floorTwoRoomThree.ordinal()]);
+        locations[1][2].setCoordinates(new Point(1,2));
         locations[1][3].setScene(scenes[Scene.SceneType.floorTwoRoomFour.ordinal()]);
+        locations[1][3].setCoordinates(new Point(1,3));
         locations[1][4].setScene(scenes[Scene.SceneType.floorTwoRoomFive.ordinal()]);
+        locations[1][4].setCoordinates(new Point(1,4));
         locations[2][0].setScene(scenes[Scene.SceneType.floorThreeRoomOne.ordinal()]);
+        locations[2][0].setCoordinates(new Point(2,0));
         locations[2][1].setScene(scenes[Scene.SceneType.floorThreeRoomTwo.ordinal()]);
+        locations[2][1].setCoordinates(new Point(2,1));
         locations[2][2].setScene(scenes[Scene.SceneType.floorThreeRoomThree.ordinal()]);
+        locations[2][2].setCoordinates(new Point(2,2));
         locations[2][3].setScene(scenes[Scene.SceneType.floorThreeRoomFour.ordinal()]);
+        locations[2][3].setCoordinates(new Point(2,3));
         locations[2][4].setScene(scenes[Scene.SceneType.floorThreeRoomFive.ordinal()]);
+        locations[2][4].setCoordinates(new Point(2,4));
         locations[3][0].setScene(scenes[Scene.SceneType.floorFourRoomOne.ordinal()]);
+        locations[3][0].setCoordinates(new Point(3,0));
         locations[3][1].setScene(scenes[Scene.SceneType.floorFourRoomTwo.ordinal()]);
+        locations[3][1].setCoordinates(new Point(3,1));
         locations[3][2].setScene(scenes[Scene.SceneType.floorFourRoomThree.ordinal()]);
+        locations[3][2].setCoordinates(new Point(3,2));
         locations[3][3].setScene(scenes[Scene.SceneType.floorFourRoomFour.ordinal()]);
+        locations[3][3].setCoordinates(new Point(3,3));
         locations[3][4].setScene(scenes[Scene.SceneType.floorFourRoomFive.ordinal()]);
+        locations[3][4].setCoordinates(new Point(3,4));
         locations[4][0].setScene(scenes[Scene.SceneType.floorFiveRoomOne.ordinal()]);
+        locations[4][0].setCoordinates(new Point(4,0));
         locations[4][1].setScene(scenes[Scene.SceneType.floorFiveRoomTwo.ordinal()]);
+        locations[4][1].setCoordinates(new Point(4,1));
         locations[4][2].setScene(scenes[Scene.SceneType.floorFiveRoomThree.ordinal()]);
+        locations[4][2].setCoordinates(new Point(4,2));
         locations[4][3].setScene(scenes[Scene.SceneType.floorFiveRoomFour.ordinal()]);
-        locations[4][4].setScene(scenes[Scene.SceneType.floorFiveRoomFive.ordinal()]);   
+        locations[4][3].setCoordinates(new Point(4,3));
+        locations[4][4].setScene(scenes[Scene.SceneType.floorFiveRoomFive.ordinal()]); 
+        locations[4][4].setCoordinates(new Point(4,4));
     }
     
     

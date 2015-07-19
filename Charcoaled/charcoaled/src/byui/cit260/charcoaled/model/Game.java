@@ -24,7 +24,6 @@ public class Game implements Serializable {
     private double countSavedVictims;
     private double countLostVictims;
     private InventoryItem[] inventory;
-    
     private Map map;
     private Player player;
     

@@ -5,8 +5,11 @@
  */
 package byui.cit260.charcoaled.model;
 
+import java.awt.Point;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Objects;
 
 /**
  *
@@ -18,14 +21,39 @@ public class Location implements Serializable{
     private int row;
     private int column;
     private boolean visited;
-    private int roomsRemaining;
-    private int type;
-    
+    private boolean isCurrentActorLocation = false;
     private Scene scene;
     private ArrayList<Actor> actors;
     private Obstacle obstacle;
     private Actor[] actor;
     private ArrayList<Resource> resources = new ArrayList<Resource>();
+    private int type;
+    private Point coordinates;
+
+    public Point getCoordinates() {
+        return coordinates;
+    }
+
+    public void setCoordinates(Point coordinates) {
+        this.coordinates = coordinates;
+    }
+    
+    public boolean getIsCurrentActorLocation() {
+        return isCurrentActorLocation;
+    }
+
+    public void setIsCurrentActorLocation(boolean isCurrentActorLocation) {
+        this.isCurrentActorLocation = isCurrentActorLocation;
+    }
+
+    public Actor[] getActor() {
+        return actor;
+    }
+
+    public void setActor(Actor[] actor) {
+        this.actor = actor;
+    }
+   
     
     public Location() {
     }
@@ -79,14 +107,6 @@ public class Location implements Serializable{
         this.visited = visited;
     }
 
-    public int getRoomsRemaining() {
-        return roomsRemaining;
-    }
-
-    public void setRoomsRemaining(int roomsRemaining) {
-        this.roomsRemaining = roomsRemaining;
-    }
-
     public int getType() {
         return type;
     }
@@ -102,23 +122,22 @@ public class Location implements Serializable{
     public void setResources(ArrayList<Resource> resources) {
         this.resources = resources;
     }
-    
-    @Override
-    public String toString() {
-        return "Location{" + "row=" + row + ", column=" + column + ", visited=" + visited + ", roomsRemaining=" + roomsRemaining + ", type=" + type + '}';
-    }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 41 * hash + this.row;
-        hash = 41 * hash + this.column;
-        hash = 41 * hash + (this.visited ? 1 : 0);
-        hash = 41 * hash + this.roomsRemaining;
-        hash = 41 * hash + this.type;
+        int hash = 7;
+        hash = 97 * hash + this.row;
+        hash = 97 * hash + this.column;
+        hash = 97 * hash + (this.visited ? 1 : 0);
+        hash = 97 * hash + (this.isCurrentActorLocation ? 1 : 0);
+        hash = 97 * hash + this.type;
+        hash = 97 * hash + Objects.hashCode(this.scene);
+        hash = 97 * hash + Objects.hashCode(this.actors);
+        hash = 97 * hash + Objects.hashCode(this.obstacle);
+        hash = 97 * hash + Arrays.deepHashCode(this.actor);
+        hash = 97 * hash + Objects.hashCode(this.resources);
         return hash;
     }
-
 
     @Override
     public boolean equals(Object obj) {
@@ -138,14 +157,33 @@ public class Location implements Serializable{
         if (this.visited != other.visited) {
             return false;
         }
-        if (this.roomsRemaining != other.roomsRemaining) {
+        if (this.isCurrentActorLocation != other.isCurrentActorLocation) {
             return false;
         }
         if (this.type != other.type) {
             return false;
         }
+        if (!Objects.equals(this.scene, other.scene)) {
+            return false;
+        }
+        if (!Objects.equals(this.actors, other.actors)) {
+            return false;
+        }
+        if (this.obstacle != other.obstacle) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.actor, other.actor)) {
+            return false;
+        }
+        if (!Objects.equals(this.resources, other.resources)) {
+            return false;
+        }
         return true;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Location{" + "row=" + row + ", column=" + column + ", visited=" + visited + ", isCurrentActorLocation=" + isCurrentActorLocation + ", type=" + type + ", scene=" + scene + ", actors=" + actors + ", obstacle=" + obstacle + ", actor=" + actor + ", resources=" + resources + '}';
+    }
     
 }

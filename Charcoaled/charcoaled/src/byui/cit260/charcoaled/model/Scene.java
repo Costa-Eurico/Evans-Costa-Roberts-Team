@@ -6,10 +6,6 @@
 
 package byui.cit260.charcoaled.model;
 
-import byui.cit260.charcoaled.control.GameControl;
-import byui.cit260.charcoaled.control.MapControl;
-import charcoaled.Charcoaled;
-import java.awt.image.BufferedImage;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
