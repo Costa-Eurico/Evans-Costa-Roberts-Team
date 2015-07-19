@@ -86,9 +86,6 @@ class GameMenuView extends View {
             case 'j':
                 this.dropItem();
                 break;
-            case 'p':
-                this.pauseGame();
-                break;
             case 'r':
                 this.printActorsReport();
                 break;
@@ -218,11 +215,11 @@ class GameMenuView extends View {
 
     private void dropItem() {
         this.console.println("*** dropItem function called ***");
-    }
+   }
 
-    private void pauseGame() {
-        this.console.println("*** pauseGame function called ***");
-    }
+   // private void pauseGame() {
+   //     this.console.println("*** pauseGame function called ***");
+   // }
 
 //    private void saveGame() {
 //        String errorMessage = "Error - ";

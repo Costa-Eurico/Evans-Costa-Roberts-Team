@@ -19,9 +19,34 @@ import javax.swing.ImageIcon;
 public class Scene implements Serializable{
     private String name;
     private String description;
-    private int victims;
-    private Location[] location;
-    private Victim victim;
+    private int actors;
+    private Actor actor;
+    private Item[] items;
+    private Object[] location;
+
+    public void setActors(int actors) {
+        this.actors = actors;
+    }
+
+    public void setActor(Actor actor) {
+        this.actor = actor;
+    }
+
+    public void setItems(Item[] items) {
+        this.items = items;
+    }
+
+    public int getActors() {
+        return actors;
+    }
+
+    public Actor getActor() {
+        return actor;
+    }
+
+    public Item[] getItems() {
+        return items;
+    }
     
     public String getName() {
         return name;
@@ -39,13 +64,6 @@ public class Scene implements Serializable{
         this.description = description;
     }
 
-    public int getVictims() {
-        return victims;
-    }
-
-    public void setVictims(int victims) {
-        this.victims = victims;
-    }
 
     public Scene() {
     }
@@ -107,7 +125,8 @@ public class Scene implements Serializable{
 
     @Override
     public String toString() {
-        return "Scene{" + "name=" + name + ", description=" + description + ", victims=" + victims + ", location=" + location + ", victim=" + victim + '}';
+        String location = null;
+        return "Scene{" + "name=" + name + ", description=" + description + ", victims=" + actors + ", location=" + location + ", victim=" + actor + '}';
     }
 
     @Override
@@ -115,9 +134,9 @@ public class Scene implements Serializable{
         int hash = 7;
         hash = 31 * hash + Objects.hashCode(this.name);
         hash = 31 * hash + Objects.hashCode(this.description);
-        hash = 31 * hash + this.victims;
+        hash = 31 * hash + this.actors;
         hash = 31 * hash + Arrays.deepHashCode(this.location);
-        hash = 31 * hash + Objects.hashCode(this.victim);
+        hash = 31 * hash + Objects.hashCode(this.actor);
         return hash;
     }
 
@@ -136,13 +155,13 @@ public class Scene implements Serializable{
         if (!Objects.equals(this.description, other.description)) {
             return false;
         }
-        if (this.victims != other.victims) {
+        if (this.actors != other.actors) {
             return false;
         }
         if (!Arrays.deepEquals(this.location, other.location)) {
             return false;
         }
-        if (!Objects.equals(this.victim, other.victim)) {
+        if (!Objects.equals(this.actor, other.actor)) {
             return false;
         }
         return true;
