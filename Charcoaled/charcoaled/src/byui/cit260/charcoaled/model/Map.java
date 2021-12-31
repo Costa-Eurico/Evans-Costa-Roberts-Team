@@ -67,7 +67,7 @@ public class Map implements Serializable{
         }
         
         public int hashCode() {
-            return new Integer(x + "0" + y);
+            return Integer.valueOf(x + "0" + y);
         }
     }
 

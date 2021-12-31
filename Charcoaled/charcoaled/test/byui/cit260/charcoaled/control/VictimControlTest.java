@@ -5,6 +5,7 @@
  */
 package byui.cit260.charcoaled.control;
 
+import exception.VictimControlException;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -21,7 +22,7 @@ public class VictimControlTest {
      * Test of calcFloorHeight method, of class VictimControl.
      */
     @Test
-    public void testCalcFloorHeight() {
+    public void testCalcFloorHeight() throws VictimControlException {
         
         System.out.println("calcFloorHeight");
         /***********************************

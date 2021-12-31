@@ -5,6 +5,7 @@
  */
 package byui.cit260.charcoaled.control;
 
+import exception.SceneControlException;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -21,7 +22,7 @@ public class SceneControlTest {
      * Test of calcRoomSize method, of class SceneControl.
      */
        @Test
-    public void testCalcRoomSize() {
+    public void testCalcRoomSize() throws SceneControlException {
         
         System.out.println("calcRoomSize");
         /***********************************

@@ -5,6 +5,7 @@
  */
 package byui.cit260.charcoaled.control;
 
+import exception.ActorControlException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Test;
@@ -214,7 +215,7 @@ public class ActorControlTest {
      * Test of calcForceNeeded method, of class ActorControl.
      */
     @Test
-    public void testCalcForceNeeded() {
+    public void testCalcForceNeeded() throws ActorControlException {
         double weight;
         double cof;
         double expResult;  //expected output returned value
